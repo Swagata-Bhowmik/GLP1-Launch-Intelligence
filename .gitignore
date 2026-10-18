@@ -1,0 +1,47 @@
+# ---- Data (too large / regenerable) ----
+data/01_raw/**
+!data/01_raw/**/
+!data/01_raw/**/.gitkeep
+data/02_interim/**
+!data/02_interim/.gitkeep
+# Small final tables / synthetic dataset may be committed later on purpose
+*.csv
+*.parquet
+*.zip
+*.gz
+
+# ---- Models ----
+models/**
+!models/.gitkeep
+*.safetensors
+*.bin
+*.pt
+*.onnx
+
+# ---- Secrets ----
+.env
+*.key
+
+# ---- Python ----
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+.pytest_cache/
+
+# ---- Vector stores / caches ----
+chroma_db/
+*.faiss
+.cache/
+
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# ---- Private planning docs (local only, not public) ----
+PROJECT_HANDOFF.md
+CLAUDE.md

@@ -1,0 +1,49 @@
+# Core data
+pandas
+numpy
+duckdb
+pyarrow
+requests
+python-dotenv
+tqdm
+
+# Classic NLP & ML
+scikit-learn
+spacy
+nltk
+gensim
+
+# Topic modelling & keywords
+bertopic
+umap-learn
+hdbscan
+keybert
+
+# Transformers (fine-tuning heavy jobs run on Google Colab GPU)
+transformers
+datasets
+evaluate
+seqeval
+accelerate
+sentence-transformers
+torch
+
+# LLM fine-tuning (Colab)
+peft
+trl
+# bitsandbytes   # install on Colab (GPU) only
+
+# Retrieval
+faiss-cpu
+rank-bm25
+
+# App & visualisation
+streamlit
+plotly
+matplotlib
+seaborn
+folium
+
+# Notebooks
+jupyter
+ipykernel
