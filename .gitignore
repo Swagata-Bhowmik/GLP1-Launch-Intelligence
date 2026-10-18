@@ -45,3 +45,7 @@ desktop.ini
 # ---- Private planning docs (local only, not public) ----
 PROJECT_HANDOFF.md
 CLAUDE.md
+
+# ---- Local tool config ----
+.claude/
+*.egg-info/

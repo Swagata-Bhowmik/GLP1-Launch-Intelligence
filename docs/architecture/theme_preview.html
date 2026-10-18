@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aurora Theme Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ── Aurora design tokens ─────────────────────────────────────────────── */
+  :root {
+    --ink:        #140F33;   /* deep indigo night: sidebar, hero, headings      */
+    --ink-2:      #231B52;
+    --violet:     #7C5CFF;   /* primary: buttons, active nav, tirzepatide       */
+    --violet-soft:#EFEAFF;
+    --aqua:       #22D3C5;   /* secondary: positive trends, semaglutide         */
+    --aqua-soft:  #E3FBF8;
+    --peach:      #FF8A65;   /* alerts only: side-effect flags                  */
+    --peach-soft: #FFEDE6;
+    --amber:      #FFC857;   /* highlights, stars, "new" badges                 */
+    --mist:       #F6F4FF;   /* page background                                 */
+    --surface:    #FFFFFF;
+    --text:       #1E1B3A;
+    --text-2:     #6B6790;
+    --line:       #E7E3F7;
+    --aurora:     linear-gradient(120deg, #7C5CFF 0%, #5B8CFF 45%, #22D3C5 100%);
+    --radius:     18px;
+    --shadow:     0 10px 30px -12px rgba(76, 52, 190, .28);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--mist); color: var(--text);
+    font: 15px/1.6 "Inter", system-ui, sans-serif;
+  }
+  h1, h2, h3, .num { font-family: "Plus Jakarta Sans", sans-serif; letter-spacing: -.02em; }
+
+  /* ── Hero with drifting aurora blobs ─────────────────────────────────── */
+  .hero {
+    position: relative; overflow: hidden; color: #fff;
+    background: var(--ink); padding: 44px 40px 52px; border-radius: 0 0 32px 32px;
+  }
+  .blob { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .55; animation: drift 18s ease-in-out infinite alternate; }
+  .b1 { width: 420px; height: 420px; background: #7C5CFF; top: -160px; left: -80px; }
+  .b2 { width: 380px; height: 380px; background: #22D3C5; bottom: -200px; right: 10%; animation-delay: -6s; }
+  .b3 { width: 260px; height: 260px; background: #FF8A65; top: 20px; right: -60px; opacity: .35; animation-delay: -11s; }
+  @keyframes drift {
+    0%   { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(60px, 40px) scale(1.15); }
+  }
+  .hero > :not(.blob) { position: relative; }
+  .eyebrow { display: inline-flex; gap: 8px; align-items: center; font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase;
+             background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18); padding: 6px 12px; border-radius: 999px; backdrop-filter: blur(8px); }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--aqua); box-shadow: 0 0 0 0 rgba(34,211,197,.7); animation: pulse 2s infinite; }
+  @keyframes pulse { 70% { box-shadow: 0 0 0 10px rgba(34,211,197,0); } 100% { box-shadow: 0 0 0 0 rgba(34,211,197,0); } }
+  .hero h1 { font-size: clamp(30px, 5vw, 48px); margin: 18px 0 8px; line-height: 1.08; font-weight: 800; }
+  .grad-text { background: linear-gradient(90deg, #B9A8FF, #7FE9DF, #B9A8FF); background-size: 200% auto;
+               -webkit-background-clip: text; background-clip: text; color: transparent; animation: shine 6s linear infinite; }
+  @keyframes shine { to { background-position: 200% center; } }
+  .hero p { color: #CFC9F2; max-width: 640px; margin: 0; font-size: 16px; }
+
+  /* ── Layout ──────────────────────────────────────────────────────────── */
+  main { max-width: 1180px; margin: -28px auto 60px; padding: 0 16px; display: grid; gap: 22px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px;
+    box-shadow: var(--shadow); opacity: 0; transform: translateY(14px); animation: rise .7s cubic-bezier(.2,.7,.2,1) forwards;
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -14px rgba(76,52,190,.38); }
+  @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+  .card h3 { margin: 0 0 4px; font-size: 17px; }
+  .sub { color: var(--text-2); font-size: 13px; margin: 0 0 14px; }
+  .grid-4 { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .grid-2 { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); }
+
+  /* ── KPI cards ───────────────────────────────────────────────────────── */
+  .kpi { position: relative; overflow: hidden; }
+  .kpi::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; background: var(--aurora); }
+  .kpi .label { color: var(--text-2); font-size: 13px; display: flex; align-items: center; gap: 8px; }
+  .kpi .icon { width: 30px; height: 30px; border-radius: 10px; display: grid; place-items: center; font-size: 15px; }
+  .kpi .num { font-size: 32px; font-weight: 800; margin: 8px 0 2px; }
+  .trend { font-size: 12.5px; font-weight: 600; color: #0E9F94; }
+
+  /* ── Bars ────────────────────────────────────────────────────────────── */
+  .bar-row { display: grid; grid-template-columns: 96px 1fr 70px; align-items: center; gap: 12px; margin: 10px 0; font-size: 13.5px; }
+  .track { height: 14px; background: #F1EEFC; border-radius: 99px; overflow: hidden; }
+  .fill { height: 100%; width: 0; border-radius: 99px; transition: width 1.4s cubic-bezier(.2,.8,.2,1); }
+  .val { text-align: right; font-variant-numeric: tabular-nums; color: var(--text-2); }
+
+  /* ── Table ───────────────────────────────────────────────────────────── */
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th { text-align: left; color: var(--text-2); font-weight: 500; padding: 8px 6px; border-bottom: 1px solid var(--line); }
+  td { padding: 10px 6px; border-bottom: 1px solid #F3F1FB; }
+  tr { transition: background .2s; }
+  tbody tr:hover { background: var(--violet-soft); }
+  .score { display: inline-block; min-width: 42px; text-align: center; padding: 3px 10px; border-radius: 99px; font-weight: 600;
+           background: var(--violet-soft); color: #4B32C8; }
+  .pill { font-size: 11.5px; padding: 3px 9px; border-radius: 99px; font-weight: 600; }
+
+  /* ── Ask AI ──────────────────────────────────────────────────────────── */
+  .chat { display: grid; gap: 12px; }
+  .bubble { padding: 12px 16px; border-radius: 16px; max-width: 92%; font-size: 14px; }
+  .q { justify-self: end; background: var(--ink); color: #fff; border-bottom-right-radius: 4px; }
+  .a { background: linear-gradient(var(--surface), var(--surface)) padding-box, var(--aurora) border-box; border: 1.5px solid transparent;
+       border-bottom-left-radius: 4px; }
+  .cite { display: inline-block; font-size: 11px; font-weight: 600; color: #4B32C8; background: var(--violet-soft); border-radius: 6px; padding: 0 6px; margin-left: 2px; }
+  .typing span { display: inline-block; width: 7px; height: 7px; margin-right: 4px; border-radius: 50%; background: var(--violet); animation: bounce 1.2s infinite; }
+  .typing span:nth-child(2) { animation-delay: .15s; background: #5B8CFF; }
+  .typing span:nth-child(3) { animation-delay: .3s; background: var(--aqua); }
+  @keyframes bounce { 0%, 80%, 100% { transform: translateY(0); opacity: .5; } 40% { transform: translateY(-6px); opacity: 1; } }
+  .btn { border: 0; color: #fff; background: var(--aurora); background-size: 160% auto; padding: 11px 18px; border-radius: 12px;
+         font-weight: 600; cursor: pointer; transition: background-position .4s, transform .15s; font-family: inherit; }
+  .btn:hover { background-position: right center; transform: translateY(-1px); }
+
+  /* ── Palette swatches ────────────────────────────────────────────────── */
+  .swatches { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+  .sw { border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); }
+  .sw div { height: 70px; }
+  .sw p { margin: 0; padding: 8px 12px; font-size: 12.5px; }
+  .sw b { display: block; font-size: 13px; }
+
+  @media (prefers-reduced-motion: reduce) { *, *::before { animation: none !important; transition: none !important; } .card { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <span class="eyebrow"><span class="dot"></span>Live · Medicare Part D 2024 + 2026 signals</span>
+  <h1>GLP-1 <span class="grad-text">Launch Intelligence</span></h1>
+  <p>Which doctors to target after the 2026 GLP-1 market shift, and why. The "Aurora" theme preview: deep indigo, violet-to-aqua glow, warm peach for alerts.</p>
+</header>
+
+<main>
+  <!-- KPI row: real numbers from notebook 02 -->
+  <section class="grid-4">
+    <div class="card kpi" style="animation-delay:.05s">
+      <div class="label"><span class="icon" style="background:var(--violet-soft);color:#4B32C8">◉</span>GLP-1 prescribers</div>
+      <div class="num" data-count="199831">0</div><div class="trend">Medicare Part D 2024</div>
+    </div>
+    <div class="card kpi" style="animation-delay:.12s">
+      <div class="label"><span class="icon" style="background:var(--aqua-soft);color:#0E8C83">▤</span>Claims</div>
+      <div class="num" data-count="19.6" data-suffix="M" data-dec="1">0</div><div class="trend">US$24.6 bn spend</div>
+    </div>
+    <div class="card kpi" style="animation-delay:.19s">
+      <div class="label"><span class="icon" style="background:#EEF2FF;color:#3F5BD9">◐</span>Tirzepatide share</div>
+      <div class="num" data-count="30.1" data-suffix="%" data-dec="1">0</div><div class="trend">vs semaglutide</div>
+    </div>
+    <div class="card kpi" style="animation-delay:.26s">
+      <div class="label"><span class="icon" style="background:#FFF6DD;color:#A8770B">★</span>Top-decile share</div>
+      <div class="num" data-count="41.4" data-suffix="%" data-dec="1">0</div><div class="trend">of claims from 10% of doctors</div>
+    </div>
+  </section>
+
+  <section class="grid-2">
+    <div class="card" style="animation-delay:.33s">
+      <h3>Claims by brand</h3>
+      <p class="sub">Medicare Part D 2024 · millions of claims</p>
+      <div id="bars"></div>
+    </div>
+
+    <div class="card" style="animation-delay:.4s">
+      <h3>Ask AI</h3>
+      <p class="sub">Answers grounded in labels, papers and data, with citations</p>
+      <div class="chat">
+        <div class="bubble q">Which endocrinologists in Ohio should we prioritise for the Medicare Bridge, and why?</div>
+        <div class="bubble a" id="answer"><span class="typing"><span></span><span></span><span></span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid-2">
+    <div class="card" style="animation-delay:.47s">
+      <h3>Top doctors to target</h3>
+      <p class="sub">Illustrative rows · placeholder names</p>
+      <table>
+        <thead><tr><th>Doctor</th><th>Specialty</th><th>State</th><th>Signal</th><th>Score</th></tr></thead>
+        <tbody>
+          <tr><td>Dr. A. Rivera</td><td>Endocrinology</td><td>OH</td><td><span class="pill" style="background:var(--aqua-soft);color:#0E7C74">High volume</span></td><td><span class="score">96</span></td></tr>
+          <tr><td>Dr. K. Mensah</td><td>Internal Med.</td><td>TX</td><td><span class="pill" style="background:var(--violet-soft);color:#4B32C8">Trial site</span></td><td><span class="score">92</span></td></tr>
+          <tr><td>Dr. L. Okafor</td><td>Family Practice</td><td>FL</td><td><span class="pill" style="background:#FFF6DD;color:#8A6106">Growing</span></td><td><span class="score">89</span></td></tr>
+          <tr><td>Dr. S. Iyer</td><td>Endocrinology</td><td>MI</td><td><span class="pill" style="background:var(--peach-soft);color:#B4472A">Nausea concern</span></td><td><span class="score">85</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card" style="animation-delay:.54s">
+      <h3>The Aurora palette</h3>
+      <p class="sub">Each colour has one job, so the screen stays calm</p>
+      <div class="swatches">
+        <div class="sw"><div style="background:var(--ink)"></div><p><b>Midnight ink</b>#140F33 · sidebar, hero</p></div>
+        <div class="sw"><div style="background:var(--violet)"></div><p><b>Electric violet</b>#7C5CFF · primary</p></div>
+        <div class="sw"><div style="background:var(--aqua)"></div><p><b>Aurora aqua</b>#22D3C5 · positive</p></div>
+        <div class="sw"><div style="background:var(--peach)"></div><p><b>Soft peach</b>#FF8A65 · alerts</p></div>
+        <div class="sw"><div style="background:var(--amber)"></div><p><b>Honey amber</b>#FFC857 · highlights</p></div>
+        <div class="sw"><div style="background:var(--aurora)"></div><p><b>Signature glow</b>violet → aqua</p></div>
+      </div>
+      <p style="margin:16px 0 0"><button class="btn" onclick="replay()">Replay animations</button></p>
+    </div>
+  </section>
+</main>
+
+<script>
+  // ── Real 2024 Part D claims (millions) from notebook 02 ────────────────
+  const BRANDS = [
+    ["Ozempic",   9.93, "#22D3C5"],
+    ["Mounjaro",  4.69, "#7C5CFF"],
+    ["Trulicity", 3.82, "#9B86FF"],
+    ["Rybelsus",  0.90, "#7FE9DF"],
+    ["Other",     0.28, "#C9C3E6"],
+  ];
+  const max = Math.max(...BRANDS.map(b => b[1]));
+  document.getElementById("bars").innerHTML = BRANDS.map(([name, v, c]) => `
+    <div class="bar-row"><span>${name}</span>
+      <div class="track"><div class="fill" data-w="${(100 * v / max).toFixed(1)}" style="background:${c}"></div></div>
+      <span class="val">${v.toFixed(2)}M</span></div>`).join("");
+
+  // ── Count-up numbers ───────────────────────────────────────────────────
+  function countUp(el) {
+    const target = parseFloat(el.dataset.count), dec = +(el.dataset.dec || 0), suffix = el.dataset.suffix || "";
+    const t0 = performance.now(), dur = 1400;
+    (function tick(now) {
+      const p = Math.min((now - t0) / dur, 1), eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = (target * eased).toLocaleString("en-US", { minimumFractionDigits: dec, maximumFractionDigits: dec }) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    })(t0);
+  }
+
+  // ── Typed AI answer ────────────────────────────────────────────────────
+  const ANSWER = "Start with high-volume endocrinologists already prescribing Mounjaro to patients 65+: they write ~5× more GLP-1 claims than primary care [1]. Two run active tirzepatide trial sites [2]. Watch for nausea concerns raised in recent visit notes [3].";
+  function typeAnswer() {
+    const el = document.getElementById("answer");
+    el.innerHTML = '<span class="typing"><span></span><span></span><span></span></span>';
+    setTimeout(() => {
+      let i = 0; el.textContent = "";
+      const timer = setInterval(() => {
+        i += 2;
+        el.innerHTML = ANSWER.slice(0, i).replace(/\[(\d)\]/g, '<span class="cite">$1</span>');
+        if (i >= ANSWER.length) clearInterval(timer);
+      }, 18);
+    }, 1300);
+  }
+
+  function play() {
+    document.querySelectorAll("[data-count]").forEach(countUp);
+    setTimeout(() => document.querySelectorAll(".fill").forEach(f => f.style.width = f.dataset.w + "%"), 400);
+    typeAnswer();
+  }
+  function replay() {
+    document.querySelectorAll(".fill").forEach(f => f.style.width = 0);
+    document.querySelectorAll(".card").forEach(c => { c.style.animation = "none"; c.offsetHeight; c.style.animation = ""; });
+    setTimeout(play, 50);
+  }
+  play();
+</script>
+</body>
+</html>

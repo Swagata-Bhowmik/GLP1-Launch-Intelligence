@@ -7,15 +7,15 @@ Large files are git-ignored; see `PROJECT_HANDOFF.md` Section 6 for how to re-do
 | Folder | Source | Status |
 |---|---|---|
 | `01_raw/medicare_part_d_prescribers/` | CMS Medicare Part D Prescribers by Provider and Drug, 2024 (data.cms.gov) | ✅ `medicare_part_d_prescribers_by_provider_and_drug_2024.csv`: 4.43 GB, 28,023,892 rows, 22 cols |
-| `01_raw/open_payments_industry_to_doctor/` | CMS Open Payments General Payments 2024–2025 (filter Lilly, Novo Nordisk) | ⏳ |
-| `01_raw/nppes_doctor_registry/` | NPPES NPI Registry API (specialty, address) | ⏳ |
-| `01_raw/medicaid_state_drug_utilization/` | Medicaid State Drug Utilization Data 2024–2026 | ⏳ |
-| `01_raw/fda_faers_side_effect_reports/` | openFDA FAERS (tirzepatide, semaglutide, orforglipron, dulaglutide) | ⏳ |
-| `01_raw/fda_drug_labels/` | openFDA / DailyMed labels (Mounjaro, Zepbound, Foundayo, Ozempic, Wegovy, Trulicity, Rybelsus) | ⏳ |
-| `01_raw/pubmed_research_papers/` | PubMed abstracts + authors (GLP-1, obesity, orforglipron) | ⏳ |
-| `01_raw/clinicaltrials_gov_studies/` | ClinicalTrials.gov API v2 (GLP-1 trials, investigators) | ⏳ |
-| `01_raw/ade_corpus_training_data/` | Hugging Face `ade-benchmark-corpus/ade_corpus_v2` | ⏳ |
-| `02_interim/` | `part_d_2024_glp1.parquet`: GLP-1 subset, 420,364 rows, 199,831 prescribers, 11.4 MB (made by notebook 02) | ✅ |
+| `01_raw/open_payments_industry_to_doctor/` | CMS Open Payments General Payments 2024–2025, Lilly + Novo Nordisk rows only (official CSV streamed + filtered) | ⏳ downloading |
+| `01_raw/nppes_doctor_registry/` | NPPES monthly bulk zip (Oct 2026, 1.16 GB, streamed, never unzipped) | ✅ |
+| `01_raw/medicaid_state_drug_utilization/` | Medicaid SDUD 2024, 2025, 2026 (Q1), GLP-1 brands, 26,202 rows. Drop `state = XX` (national totals) before summing | ✅ |
+| `01_raw/fda_faers_side_effect_reports/` | openFDA FAERS aggregated counts (reactions, seriousness, quarterly reports) for 6 GLP-1 molecules | ✅ |
+| `01_raw/fda_drug_labels/` | openFDA labels, 9 brands (incl. repackager copies; Novo Ozempic/Wegovy own labels still needed from DailyMed) | ✅ |
+| `01_raw/pubmed_research_papers/` | PubMed abstracts + authors + affiliations, 4 queries, 8,900 papers (JSONL) | ✅ |
+| `01_raw/clinicaltrials_gov_studies/` | ClinicalTrials.gov v2, 7 molecules, 1,871 studies (full JSON) | ✅ |
+| `01_raw/ade_corpus_training_data/` | Hugging Face `ade-benchmark-corpus/ade_corpus_v2`, 3 configs (parquet) | ✅ |
+| `02_interim/` | `nppes_glp1_prescribers.parquet` (199,830 doctors) · `part_d_2024_glp1.parquet`: GLP-1 subset, 420,364 rows, 199,831 prescribers, 11.4 MB (made by notebook 02) | ✅ |
 | `03_processed/` | e.g. `hcp_360.parquet` (one row per doctor), targeting scores | ⏳ |
 | `04_synthetic_visit_notes/` | LLM-generated rep notes, grounded + partly hand-labelled (**synthetic**) | ⏳ |
 
