@@ -1,0 +1,9 @@
+# Aurora theme for the Streamlit app (approved 18 Oct 2026).
+# Full palette, gradient and animations: docs/architecture/theme_preview.html
+[theme]
+base = "light"
+primaryColor = "#7C5CFF"              # electric violet: buttons, active widgets
+backgroundColor = "#F6F4FF"           # mist page background
+secondaryBackgroundColor = "#FFFFFF"  # cards / sidebar widgets
+textColor = "#1E1B3A"
+font = "sans serif"
