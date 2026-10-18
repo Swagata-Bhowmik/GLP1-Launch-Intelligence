@@ -16,7 +16,7 @@ Large files are git-ignored; see `PROJECT_HANDOFF.md` Section 6 for how to re-do
 | `01_raw/clinicaltrials_gov_studies/` | ClinicalTrials.gov v2, 7 molecules, 1,871 studies (full JSON) | ✅ |
 | `01_raw/ade_corpus_training_data/` | Hugging Face `ade-benchmark-corpus/ade_corpus_v2`, 3 configs (parquet) | ✅ |
 | `02_interim/` | `nppes_glp1_prescribers.parquet` (199,830 doctors) · `part_d_2024_glp1.parquet`: GLP-1 subset, 420,364 rows, 199,831 prescribers, 11.4 MB (made by notebook 02) | ✅ |
-| `03_processed/` | e.g. `hcp_360.parquet` (one row per doctor), targeting scores | ⏳ |
+| `03_processed/` | `hcp_360.parquet`: 316,559 doctors × 50 columns, one row per NPI (see `docs/hcp_360_data_dictionary.md`) | ✅ (payments columns pending) |
 | `04_synthetic_visit_notes/` | LLM-generated rep notes, grounded + partly hand-labelled (**synthetic**) | ⏳ |
 
 ## Part D 2024 columns

@@ -36,12 +36,14 @@ def _main_csv(zf: zipfile.ZipFile) -> str:
     return next(n for n in zf.namelist() if n.startswith("npidata_pfile") and not n.endswith("fileheader.csv"))
 
 
-def build(zip_path=None, overwrite: bool = False, chunksize: int = 500_000) -> pd.DataFrame:
-    if OUT.exists() and not overwrite:
-        return pd.read_parquet(OUT)
+def build(npis: set | None = None, out=OUT, zip_path=None, overwrite: bool = False,
+          chunksize: int = 500_000) -> pd.DataFrame:
+    """Keep NPPES rows for `npis` (default: all GLP-1 prescribers from notebook 02) and save to `out`."""
+    if out.exists() and not overwrite:
+        return pd.read_parquet(out)
     zip_path = zip_path or max(RAW_DIR.glob("NPPES_Data_Dissemination_*.zip"))
-    wanted = set(duckdb.sql(f"SELECT DISTINCT Prscrbr_NPI FROM read_parquet('{PART_D_2024_GLP1.as_posix()}')")
-                 .df()["Prscrbr_NPI"])
+    wanted = npis or set(duckdb.sql(f"SELECT DISTINCT Prscrbr_NPI FROM read_parquet('{PART_D_2024_GLP1.as_posix()}')")
+                         .df()["Prscrbr_NPI"])
     kept = []
     with zipfile.ZipFile(zip_path) as zf, zf.open(_main_csv(zf)) as f:
         header = pd.read_csv(zf.open(_main_csv(zf)), nrows=0).columns
@@ -55,6 +57,6 @@ def build(zip_path=None, overwrite: bool = False, chunksize: int = 500_000) -> p
             kept.append(chunk[chunk["NPI"].isin(wanted)])
     df = pd.concat(kept, ignore_index=True).rename(columns=cols)
     df["practice_zip5"] = df["practice_zip"].str[:5]
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    df.to_parquet(OUT, index=False)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    df.to_parquet(out, index=False)
     return df
