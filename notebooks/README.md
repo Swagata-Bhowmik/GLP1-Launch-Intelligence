@@ -5,7 +5,7 @@ Read in order. Each notebook explains the theory in plain language, then applies
 | # | Notebook | Topic | Status |
 |---|---|---|---|
 | 01 | `01_data_collection_public_apis.ipynb` | Fetching public pharma data via APIs | ⏳ |
-| 02 | `02_part_d_glp1_filter_and_profile.ipynb` | DuckDB on a 28M-row file; GLP-1 subset; first EDA | ⏳ |
+| 02 | `02_part_d_glp1_filter_and_profile.ipynb` | DuckDB on a 28M-row file; GLP-1 subset; first EDA | ✅ |
 | 03 | `03_build_hcp_360_doctor_table.ipynb` | One row per doctor (data unification) | ⏳ |
 | 04 | `04_glp1_market_landscape_eda.ipynb` | Market share, specialties, states, story | ⏳ |
 | 05 | `05_doctor_segmentation_and_targeting.ipynb` | Deciling, segmentation, targeting score | ⏳ |

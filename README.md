@@ -2,6 +2,8 @@
 
 **An open-source AI platform that helps pharma sales-optimization teams decide which doctors to target after the 2026 GLP-1 market shift, built on real public US data with NLP, transformers, RAG and AI agents.**
 
+![GLP-1 Launch Intelligence concept](docs/architecture/concept_poster.png)
+
 > 🚧 Work in progress (started Oct 2026). Live demo, models and dataset links will appear here.
 
 ## Why
@@ -19,6 +21,14 @@ CMS Medicare Part D Prescribers (2024) · CMS Open Payments · NPPES NPI Registr
 
 ## NLP / AI covered
 Text preprocessing & tokenisation → TF-IDF baselines → word embeddings & topic modelling (BERTopic) → fine-tuned BERT/PubMedBERT (classification, NER, adverse-event detection) → sentence embeddings & vector search → RAG → LLM agents → LoRA fine-tuning → evaluation & guardrails.
+
+## Setup
+```bash
+py -3.11 -m venv .venv
+.venv\Scriptsctivate
+pip install -r requirements.txt        # or requirements-lock.txt for exact versions
+```
+The raw CMS Part D 2024 file (4.4 GB) is not in Git; see `data/README.md` for sources.
 
 ## Disclaimer
 Independent portfolio project using only public and synthetic data. Not affiliated with or endorsed by any pharmaceutical company. Not medical advice.

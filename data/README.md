@@ -15,11 +15,11 @@ Large files are git-ignored; see `PROJECT_HANDOFF.md` Section 6 for how to re-do
 | `01_raw/pubmed_research_papers/` | PubMed abstracts + authors (GLP-1, obesity, orforglipron) | ⏳ |
 | `01_raw/clinicaltrials_gov_studies/` | ClinicalTrials.gov API v2 (GLP-1 trials, investigators) | ⏳ |
 | `01_raw/ade_corpus_training_data/` | Hugging Face `ade-benchmark-corpus/ade_corpus_v2` | ⏳ |
-| `02_interim/` | e.g. `part_d_2024_glp1.parquet` (GLP-1 subset) | ⏳ |
+| `02_interim/` | `part_d_2024_glp1.parquet`: GLP-1 subset, 420,364 rows, 199,831 prescribers, 11.4 MB (made by notebook 02) | ✅ |
 | `03_processed/` | e.g. `hcp_360.parquet` (one row per doctor), targeting scores | ⏳ |
 | `04_synthetic_visit_notes/` | LLM-generated rep notes, grounded + partly hand-labelled (**synthetic**) | ⏳ |
 
 ## Part D 2024 columns
 `Prscrbr_NPI` (doctor ID) · `Prscrbr_Last_Org_Name` · `Prscrbr_First_Name` · `Prscrbr_City` · `Prscrbr_State_Abrvtn` · `Prscrbr_State_FIPS` · `Prscrbr_Type` (specialty) · `Prscrbr_Type_Src` · `Brnd_Name` · `Gnrc_Name` · `Tot_Clms` (prescriptions incl. refills) · `Tot_30day_Fills` · `Tot_Day_Suply` · `Tot_Drug_Cst` (US$) · `Tot_Benes` (patients; blank if <11) · `GE65_*` (same metrics for patients 65+, with suppression flags)
 
-GLP-1 generic names to filter: `Tirzepatide`, `Semaglutide`, `Dulaglutide`, `Liraglutide`, `Exenatide`, `Insulin Degludec/Liraglutide`.
+GLP-1 generic names to filter: `Tirzepatide`, `Semaglutide`, `Dulaglutide`, `Liraglutide`, `Exenatide`, `Exenatide Microspheres` (Bydureon BCise), `Insulin Degludec/Liraglutide`. Excluded: `Teduglutide` (GLP-2), `Insulin Glargine/Lixisenatide` (Soliqua).
