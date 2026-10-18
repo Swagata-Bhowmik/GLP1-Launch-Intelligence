@@ -16,6 +16,9 @@ In 2026 the US GLP-1 (diabetes / weight-loss) market changed: the first oral GLP
 - **Explains** via an AI assistant (RAG + tool-using agent) that cites its sources
 - Two views: 📊 **Analyst** (sales optimization) and 📱 **Sales rep** (pre-visit brief, note analysis)
 
+### Planned analyst dashboard (design mockup, illustrative numbers)
+![Dashboard mockup](docs/architecture/ui_prototype_mockup.png)
+
 ## Data (public)
 CMS Medicare Part D Prescribers (2024) · CMS Open Payments · NPPES NPI Registry · Medicaid State Drug Utilization · openFDA FAERS & drug labels · PubMed · ClinicalTrials.gov · ADE Corpus v2 · plus a **synthetic, clearly labelled** rep visit-notes dataset.
 
