@@ -29,6 +29,10 @@ BRAND_MOLECULE = {
 }
 OBESITY_BRANDS = {"zepbound", "wegovy", "saxenda"}
 MUTED = "#C9C3E6"                                        # context / "everything else"
+# Doctor segments: a separate validated categorical palette, so segments never look like molecules
+SEGMENT_COLOR = {
+    "A": "#2a78d6", "B": "#eb6834", "C": "#1baf7a", "D": "#eda100", "E": "#e87ba4", "F": MUTED,
+}
 
 
 def brand_color(brand: str) -> str:
