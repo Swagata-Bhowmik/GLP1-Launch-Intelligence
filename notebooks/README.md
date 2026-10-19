@@ -11,7 +11,7 @@ Colours show in Jupyter, VS Code and Colab; GitHub's viewer keeps the icons and 
 | 01 | `01_data_collection_public_apis.ipynb` | Fetching public pharma data via APIs | ✅ (Open Payments section fills in when the download finishes) |
 | 02 | `02_part_d_glp1_filter_and_profile.ipynb` | DuckDB on a 28M-row file; GLP-1 subset; first EDA | ✅ |
 | 03 | `03_build_hcp_360_doctor_table.ipynb` | One row per doctor (data unification) | ✅ (payments section fills in later) |
-| 04 | `04_glp1_market_landscape_eda.ipynb` | Market share, specialties, states, story | ⏳ |
+| 04 | `04_glp1_market_landscape_eda.ipynb` | Market share, specialties, states, story | ✅ |
 | 05 | `05_doctor_segmentation_and_targeting.ipynb` | Deciling, segmentation, targeting score | ⏳ |
 | 06 | `06_nlp_foundations_text_preprocessing.ipynb` | Tokenisation, stemming/lemmatisation, regex, spaCy | ⏳ |
 | 07 | `07_classical_nlp_tfidf_baselines.ipynb` | BoW, TF-IDF, Logistic Regression, metrics | ⏳ |
