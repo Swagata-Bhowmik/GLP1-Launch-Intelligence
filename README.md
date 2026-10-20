@@ -33,6 +33,13 @@ pip install -r requirements.txt        # or requirements-lock.txt for exact vers
 ```
 The raw CMS Part D 2024 file (4.4 GB) is not in Git; see `data/README.md` for sources.
 
+### Run the analyst dashboard
+```bash
+python -m glp1_intel.app_data      # builds the small tables in app/data/ (after notebooks 02-05)
+streamlit run app/app.py
+```
+Pages: **Overview** · **Market** (brands, state map, Medicaid trend to Q1 2026) · **Targeting** (filterable ranked list with reasons, CSV export) · **Doctor 360** (lookup by name or NPI, score breakdown) · **Safety signals** (FAERS).
+
 ## Disclaimer
 Independent portfolio project using only public and synthetic data. Not affiliated with or endorsed by any pharmaceutical company. Not medical advice.
 

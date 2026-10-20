@@ -7,3 +7,6 @@ backgroundColor = "#F6F4FF"           # mist page background
 secondaryBackgroundColor = "#FFFFFF"  # cards / sidebar widgets
 textColor = "#1E1B3A"
 font = "sans serif"
+
+[client]
+toolbarMode = "viewer"          # hide the Deploy button for visitors
