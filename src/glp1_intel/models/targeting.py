@@ -125,7 +125,7 @@ def build(hcp: pd.DataFrame, kol: pd.DataFrame | None = None, with_reasons_top: 
 
     keep = ["npi", "last_name", "first_name", "city", "state", "practice_zip5", "specialty", "segment", "score", "rank",
             "reasons", "diabetes_total_claims", "glp1_claims", "glp1_share_of_diabetes", "tirzepatide_share",
-            "rybelsus_claims", "pubmed_papers", "trials", *[c for c in df if c.startswith("op_lilly") or c.startswith("c_")]]
+            "rybelsus_claims", "pubmed_papers", "trials", *[c for c in df if c.startswith(("op_lilly", "op_novo", "c_"))]]
     out = df[[c for c in keep if c in df]].sort_values("rank")
     out.to_parquet(SCORES, index=False)
     return out

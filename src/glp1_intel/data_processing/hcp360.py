@@ -197,6 +197,12 @@ def build(overwrite: bool = False) -> pd.DataFrame:
         LEFT JOIN states s USING (state)
     """).df()
 
+    # No Open Payments record = no reported payment, a true zero (unlike a missing registry record)
+    op_num = [c for c in df.columns if c.startswith("op_") and c != "op_years"]
+    df[op_num] = df[op_num].fillna(0)
+    if "op_years" in df:
+        df["op_years"] = df["op_years"].fillna(df["op_years"].dropna().iloc[0] if df["op_years"].notna().any() else "")
+
     # ── Derived features (the "why" columns a targeting model and an analyst both use) ──
     dm_total = df["glp1_claims"] + df["dm_non_glp1_claims"]
     df["diabetes_total_claims"] = dm_total                                       # GLP-1 + other diabetes drugs
