@@ -36,6 +36,7 @@ debugpy==1.8.22
 defusedxml==0.7.1
 dill==0.4.1
 duckdb==1.5.6
+en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl#sha256=1932429db727d4bff3deed6b34cfc05df17794f4a52eeb26cf8928f7c1a0fb85
 evaluate==0.4.6
 executing==2.3.0
 faiss-cpu==1.15.1
@@ -47,6 +48,7 @@ fqdn==1.6.0
 frozenlist==1.8.0
 fsspec==2026.7.0
 gensim==4.4.0
+-e git+https://github.com/Swagata-Bhowmik/GLP1-Launch-Intelligence.git@be63a39b25f9c92d65442d69493709b689d6cad3#egg=glp1_intel
 h11==0.16.0
 hdbscan==0.8.44
 hf-xet==1.7.0

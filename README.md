@@ -30,6 +30,8 @@ Text preprocessing & tokenisation → TF-IDF baselines → word embeddings & top
 py -3.11 -m venv .venv
 .venv\Scriptsctivate
 pip install -r requirements.txt        # or requirements-lock.txt for exact versions
+pip install -e .                       # the project package (src/glp1_intel)
+python -m spacy download en_core_web_sm
 ```
 The raw CMS Part D 2024 file (4.4 GB) is not in Git; see `data/README.md` for sources.
 
