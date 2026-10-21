@@ -9,7 +9,8 @@ Interest level can't be checked by rules; the hand-labelled sample measures it (
 """
 import re
 
-NEGATION = r"\b(no|not|never|without|denies|denied|deny|none|didn't|did not|hasn't|haven't|wasn't|isn't|free of)\b"
+BRANDS = ["Mounjaro", "Zepbound", "Foundayo", "Ozempic", "Wegovy", "Rybelsus", "Trulicity", "Victoza", "Saxenda"]
+NEGATION =r"\b(no|not|never|without|denies|denied|deny|none|didn't|did not|hasn't|haven't|wasn't|isn't|free of)\b"
 
 # Everyday words reps use for each FAERS (MedDRA) term
 AE_ALIASES = {
@@ -45,14 +46,17 @@ AE_ALIASES = {
 }
 FORBIDDEN = [
     r"\battitude\s*:", r"\binterest(?: level)?\s*:", r"\bobjections?\s*:", r"\bside effects?\s*:", r"\bcompetitors?\s*:",
-    r"\bno competit", r"\babout \d+ words\b", r"\b\d+ words\b", r"\[name\]", r"\bscenario\b", r"^#", r"\*\*",
+    r"\bno competit", r"\babout \d+ words\b", r"\b\d+ words\b",
+    r"\bno specific patient", r"\bspecific side effect",       # phrases copied from the brief, not rep language r"\[name\]", r"\bscenario\b", r"^#", r"\*\*",
     r"\bDr\.\s+(?!(?:said|says|is|was|has|had|asked|agreed|mentioned|wants|likes|noted|thinks|felt|will|would|seemed|prefers|already|still|reports|reported|not|and|at|in|on)\b)[A-Z][a-z]{2,}",
 ]
 
 
 def aliases(term: str) -> list[str]:
     """Words that count as a mention of a FAERS term (falls back to the term's longest word)."""
-    term = (term or "").lower()
+    term = (term or "").lower().strip()
+    if not term:
+        return []                                   # no side effect in this scenario: nothing to look for
     if term in AE_ALIASES:
         return AE_ALIASES[term]
     words = [w for w in re.findall(r"[a-z]+", term) if len(w) >= 5]
@@ -79,6 +83,10 @@ def check(note: str, scenario: dict) -> list[str]:
     for brand in scenario["products_discussed"]:
         if not find_mentions(note, [brand]):
             problems.append(f"missing product {brand}")
+    allowed = set(scenario["products_discussed"]) | set(scenario["competitor_mentions"])
+    for brand in BRANDS:
+        if brand not in allowed and find_mentions(note, [brand]):
+            problems.append(f"unlisted brand {brand}")      # would make the competitor label wrong
     for brand in scenario["competitor_mentions"]:
         if not find_mentions(note, [brand]):
             problems.append(f"missing competitor {brand}")
