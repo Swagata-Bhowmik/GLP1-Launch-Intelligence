@@ -15,7 +15,7 @@ Colours show in Jupyter, VS Code and Colab; GitHub's viewer keeps the icons and 
 | 05 | `05_doctor_segmentation_and_targeting.ipynb` | Deciling, segmentation, targeting score | ✅ |
 | 06 | `06_nlp_foundations_text_preprocessing.ipynb` | Tokenisation, stemming/lemmatisation, regex, spaCy | ✅ |
 | 07 | `07_classical_nlp_tfidf_baselines.ipynb` | BoW, TF-IDF, Logistic Regression, metrics | ✅ |
-| 08 | `08_word_embeddings_and_topic_modeling.ipynb` | Word2Vec, LDA, BERTopic | ⏳ |
+| 08 | `08_word_embeddings_and_topic_modeling.ipynb` | Word2Vec, LDA, BERTopic | ✅ |
 | 09 | `09_synthetic_visit_notes_generation_and_labeling.ipynb` | LLM synthetic data, labelling | ⏳ |
 | 10 | `10_transformers_explained_attention_to_bert.ipynb` | Attention, transformers, BERT | ⏳ |
 | 11 | `11_finetune_visit_note_classifier_huggingface.ipynb` | HF Trainer fine-tuning | ⏳ |

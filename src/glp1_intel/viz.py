@@ -73,6 +73,25 @@ def end_labels(ax, x: float, items: list[tuple[str, float]], min_gap: float | No
         ax.text(x, y_pos, label, va="center", fontsize=9.5, color=TEXT, **text_kw)
 
 
+def label_points(ax, xs, ys, labels, fontsize: float = 9, step_px: float = 11) -> None:
+    """Label scatter points without overlaps: greedily push each label down until its box is free."""
+    fig = ax.figure
+    fig.canvas.draw()
+    to_px = ax.transData.transform
+    placed = []                                   # (x0, y0, x1, y1) boxes in pixels
+    char_w = fontsize * 0.55 * fig.dpi / 72
+    h = fontsize * 1.25 * fig.dpi / 72
+    for x, y, text in sorted(zip(xs, ys, labels), key=lambda t: -t[1]):
+        px, py = to_px((x, y))
+        x0, w = px + 5, char_w * len(text)
+        dy = 4
+        while any(not (x0 + w < a or x0 > c or py + dy + h < b or py + dy > d) for a, b, c, d in placed):
+            dy -= step_px
+        placed.append((x0, py + dy, x0 + w, py + dy + h))
+        ax.annotate(text, (x, y), xytext=(5, dy), textcoords="offset points", fontsize=fontsize, color=TEXT,
+                    arrowprops=dict(arrowstyle="-", color=GRID, lw=0.6) if dy < -6 else None)
+
+
 def save(fig, name: str) -> None:
     """Save to reports/figures/<name>.png for the README and the report."""
     FIG_DIR.mkdir(parents=True, exist_ok=True)
