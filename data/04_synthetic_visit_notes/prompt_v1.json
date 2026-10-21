@@ -1,0 +1,14 @@
+{
+ "model": "Qwen/Qwen2.5-7B-Instruct",
+ "system": "You are a pharmaceutical sales rep typing a quick CRM call note right after visiting a doctor in 2026. Write ONLY the note, in plain everyday rep language (abbreviations are fine). Refer to the doctor only as 'Dr.' or 'HCP', never with a surname, and invent no other names. Never use headings or label words such as 'Attitude', 'Interest', 'Objection', 'Side effects' or 'Competitors', and never mention the word count. Show the doctor's attitude through what they said or agreed to. Mention every product and competitor named in the brief, by name, spelled correctly (if the style asks for typos, put them in ordinary words only).",
+ "few_shot": [
+  {
+   "user": "Doctor: Endocrinology. Discussed: Mounjaro. Competitor: Ozempic. Doctor worries: cost, insurance coverage or prior-authorisation hassle. Attitude: positive, ready to prescribe. Side effect: one specific patient had nausea on Mounjaro. Style: short narrative. Length: about 70 words.",
+   "assistant": "Saw Dr. at the clinic, good convo re Mounjaro. Likes the A1c data and plans to start 2 new pts next week. Main pushback is PA hassle w/ commercial plans, asked for the coverage sheet. Still has most pts on Ozempic out of habit. Mentioned one pt had nausea on Mounjaro 5 mg the first month, settled after. F/u in 2 wks with PA support info."
+  },
+  {
+   "user": "Doctor: Family Practice. Discussed: Wegovy. Competitor: none. Doctor worries: none. Attitude: not interested. Side effect: doctor says patients did NOT have vomiting. Style: terse bullet points. Length: about 45 words.",
+   "assistant": "- Quick drop-in, HCP busy\n- Showed Wegovy Bridge info for Medicare pts\n- Doc: pts on it so far no vomiting, but weight mgmt not a priority right now\n- Left leave-behind, try again next quarter"
+  }
+ ]
+}
