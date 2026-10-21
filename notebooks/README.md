@@ -18,7 +18,7 @@ Colours show in Jupyter, VS Code and Colab; GitHub's viewer keeps the icons and 
 | 08 | `08_word_embeddings_and_topic_modeling.ipynb` | Word2Vec, LDA, BERTopic | ✅ |
 | 09 | `09_synthetic_visit_notes_generation_and_labeling.ipynb` | LLM synthetic data, labelling | ✅ (Colab generator: `colab/09a_…`) |
 | 10 | `10_transformers_explained_attention_to_bert.ipynb` | Attention, transformers, BERT | ✅ |
-| 11 | `11_finetune_visit_note_classifier_huggingface.ipynb` | HF Trainer fine-tuning | ⏳ |
+| 11 | `11_finetune_visit_note_classifier_huggingface.ipynb` | HF Trainer fine-tuning | ✅ |
 | 12 | `12_ner_and_adverse_event_detection.ipynb` | Token classification, BIO, ADE detection | ⏳ |
 | 13 | `13_sentence_embeddings_and_vector_search.ipynb` | Embeddings, FAISS, hybrid search | ⏳ |
 | 14 | `14_rag_pre_visit_brief.ipynb` | RAG with citations | ⏳ |
