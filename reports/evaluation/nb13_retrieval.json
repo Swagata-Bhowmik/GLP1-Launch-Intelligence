@@ -1,0 +1,155 @@
+{
+  "pubmed_title_to_abstract": [
+    {
+      "method": "BM25",
+      "recall@1": 0.6625,
+      "recall@5": 0.8125,
+      "recall@10": 0.84,
+      "MRR": 0.7260119047619048,
+      "ms per query": 42.131412625312805
+    },
+    {
+      "method": "MiniLM",
+      "recall@1": 0.4575,
+      "recall@5": 0.6825,
+      "recall@10": 0.765,
+      "MRR": 0.5478978174603175,
+      "ms per query": 0.8745557069778442
+    },
+    {
+      "method": "BGE-small",
+      "recall@1": 0.615,
+      "recall@5": 0.815,
+      "recall@10": 0.8625,
+      "MRR": 0.7002847222222222,
+      "ms per query": 0.8837169408798218
+    },
+    {
+      "method": "Hybrid (BM25 + BGE)",
+      "recall@1": 0.7375,
+      "recall@5": 0.8725,
+      "recall@10": 0.905,
+      "MRR": 0.7943501984126985,
+      "ms per query": 43.312586545944214
+    }
+  ],
+  "pubmed_rerank_first100": [
+    {
+      "method": "Hybrid (BM25 + BGE)",
+      "recall@1": 0.74,
+      "recall@5": 0.89,
+      "MRR": 0.8078333333333333,
+      "ms per query": 43.312586545944214
+    },
+    {
+      "method": "Hybrid + re-rank",
+      "recall@1": 0.68,
+      "recall@5": 0.86,
+      "MRR": 0.7606666666666666,
+      "ms per query": 3118.2869720458984
+    }
+  ],
+  "label_questions": [
+    {
+      "method": "BM25",
+      "brand filter": "no",
+      "recall@1": 0.6,
+      "recall@3": 0.7,
+      "recall@5": 0.7333333333333333,
+      "MRR": 0.6584126984126983,
+      "top-1 from right brand": 0.8666666666666667
+    },
+    {
+      "method": "MiniLM",
+      "brand filter": "no",
+      "recall@1": 0.6333333333333333,
+      "recall@3": 0.7333333333333333,
+      "recall@5": 0.8333333333333334,
+      "MRR": 0.7139285714285714,
+      "top-1 from right brand": 0.9333333333333333
+    },
+    {
+      "method": "BGE-small",
+      "brand filter": "no",
+      "recall@1": 0.7,
+      "recall@3": 0.9,
+      "recall@5": 0.9333333333333333,
+      "MRR": 0.8083333333333333,
+      "top-1 from right brand": 1.0
+    },
+    {
+      "method": "Hybrid (BM25 + BGE)",
+      "brand filter": "no",
+      "recall@1": 0.7,
+      "recall@3": 0.9,
+      "recall@5": 0.9666666666666667,
+      "MRR": 0.8055555555555555,
+      "top-1 from right brand": 0.9666666666666667
+    },
+    {
+      "method": "Hybrid + re-rank",
+      "brand filter": "no",
+      "recall@1": 0.7666666666666667,
+      "recall@3": 0.9,
+      "recall@5": 0.9333333333333333,
+      "MRR": 0.8305555555555555,
+      "top-1 from right brand": 0.9666666666666667
+    },
+    {
+      "method": "BGE-small",
+      "brand filter": "yes",
+      "recall@1": 0.7,
+      "recall@3": 0.9,
+      "recall@5": 0.9333333333333333,
+      "MRR": 0.8083333333333333,
+      "top-1 from right brand": 1.0
+    },
+    {
+      "method": "Hybrid + re-rank",
+      "brand filter": "yes",
+      "recall@1": 0.7666666666666667,
+      "recall@3": 0.9333333333333333,
+      "recall@5": 0.9333333333333333,
+      "MRR": 0.8388888888888888,
+      "top-1 from right brand": 1.0
+    }
+  ],
+  "note_precision_at_10": {
+    "BM25": {
+      "cost_coverage": 0.2,
+      "gi_tolerability": 0.9,
+      "elderly_frailty": 1.0,
+      "efficacy_vs_comp": 1.0,
+      "injection_aversion": 0.3,
+      "supply_access": 1.0,
+      "safety_other": 1.0
+    },
+    "MiniLM": {
+      "cost_coverage": 0.9,
+      "gi_tolerability": 0.6,
+      "elderly_frailty": 1.0,
+      "efficacy_vs_comp": 0.3,
+      "injection_aversion": 0.9,
+      "supply_access": 1.0,
+      "safety_other": 1.0
+    },
+    "BGE-small": {
+      "cost_coverage": 1.0,
+      "gi_tolerability": 0.7,
+      "elderly_frailty": 1.0,
+      "efficacy_vs_comp": 0.4,
+      "injection_aversion": 0.7,
+      "supply_access": 1.0,
+      "safety_other": 1.0
+    },
+    "Hybrid (BM25 + BGE)": {
+      "cost_coverage": 0.6,
+      "gi_tolerability": 0.6,
+      "elderly_frailty": 1.0,
+      "efficacy_vs_comp": 0.9,
+      "injection_aversion": 0.8,
+      "supply_access": 1.0,
+      "safety_other": 1.0
+    }
+  }
+}

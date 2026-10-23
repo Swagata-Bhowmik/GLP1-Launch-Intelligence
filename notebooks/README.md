@@ -20,7 +20,7 @@ Colours show in Jupyter, VS Code and Colab; GitHub's viewer keeps the icons and 
 | 10 | `10_transformers_explained_attention_to_bert.ipynb` | Attention, transformers, BERT | ✅ |
 | 11 | `11_finetune_visit_note_classifier_huggingface.ipynb` | HF Trainer fine-tuning | ✅ |
 | 12 | `12_ner_and_adverse_event_detection.ipynb` | Token classification, BIO, ADE detection | ✅ |
-| 13 | `13_sentence_embeddings_and_vector_search.ipynb` | Embeddings, FAISS, hybrid search | ⏳ |
+| 13 | `13_sentence_embeddings_and_vector_search.ipynb` | Embeddings, FAISS, hybrid search | ✅ |
 | 14 | `14_rag_pre_visit_brief.ipynb` | RAG with citations | ⏳ |
 | 15 | `15_llm_agent_ask_ai.ipynb` | Tool-using agent | ⏳ |
 | 16 | `16_lora_finetuning_small_llm.ipynb` | LoRA/QLoRA (Colab) | ⏳ stretch |
