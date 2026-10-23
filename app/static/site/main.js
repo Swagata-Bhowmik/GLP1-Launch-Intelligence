@@ -7,20 +7,13 @@
   const APP = "https://glp1-launchlens.streamlit.app/";
 
   // ── app links ──
-  // Inside the app (Streamlit Community Cloud), this page runs in nested frames that may not navigate the whole
-  // browser tab, so open the page in the app's own frame (same origin). Standalone (GitHub Pages): normal link.
+  // Inside the app, this page is a frame of the Streamlit page, and on Streamlit Community Cloud every frame is
+  // sandboxed: a frame may not navigate its parent or the browser tab. So ask the parent app page to navigate itself
+  // (app/views/landing.py listens for this message). Standalone (GitHub Pages): open the app normally.
   document.querySelectorAll("a[data-page]").forEach((a) => a.addEventListener("click", (e) => {
-    const page = a.dataset.page;
-    if (window.parent !== window) {
-      try {
-        const base = window.parent.document.baseURI;      // e.g. https://…streamlit.app/~/+/ on Cloud, http://localhost:8501/ locally
-        e.preventDefault();
-        window.parent.location.href = new URL(page, base).href;
-        return;
-      } catch (err) { /* cross-origin parent: fall back to the normal link */ }
-    }
     e.preventDefault();
-    window.location.href = APP + page;
+    if (window.parent !== window) window.parent.postMessage({ launchlens: "open", page: a.dataset.page }, "*");
+    else window.location.href = APP + a.dataset.page;
   }));
 
   // ── in-page anchors: native smooth scroll with an offset for the fixed nav ──

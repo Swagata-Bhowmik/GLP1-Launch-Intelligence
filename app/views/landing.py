@@ -17,8 +17,18 @@ st.html("""
   const f = document.createElement("iframe");
   f.id = "ll-landing";
   f.title = "LaunchLens";
-  f.src = new URL("app/static/site/index.html?v=3", document.baseURI).href;
+  f.src = new URL("app/static/site/index.html?v=4", document.baseURI).href;
   document.body.appendChild(f);
+  // the landing page's buttons ask this page to open a tool page (frames can't navigate their parent on Cloud)
+  if (!window.__llNav) {
+    window.__llNav = true;
+    const pages = ["market", "targeting", "doctor", "safety", "home", "rep_brief", "rep_note", "ask_ai"];
+    window.addEventListener("message", (e) => {
+      const d = e.data || {};
+      if (e.origin === location.origin && d.launchlens === "open" && pages.includes(d.page))
+        location.href = new URL(d.page, document.baseURI).href;
+    });
+  }
   // leaving the Home page (Streamlit switches pages without a reload) must remove the full-screen frame
   const path = location.pathname;
   const watch = setInterval(() => { if (location.pathname !== path) { f.remove(); clearInterval(watch); } }, 300);
