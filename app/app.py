@@ -15,6 +15,9 @@ pages = {
         st.Page("views/doctor.py", title="Doctor 360", icon=":material/person_search:"),
         st.Page("views/safety.py", title="Safety signals", icon=":material/health_and_safety:"),
     ],
+    "AI assistant": [
+        st.Page("views/ask_ai.py", title="Ask AI", icon=":material/smart_toy:"),
+    ],
 }
 nav = st.navigation(pages)
 
@@ -27,5 +30,5 @@ nav.run()
 
 with st.sidebar:
     st.markdown("---")
-    st.caption("Coming next: Voice of doctors · Ask AI (RAG agent) · Sales-rep view")
+    st.caption("Coming next: Voice of doctors · Sales-rep view")
     st.caption("Public + synthetic data only. Not affiliated with any pharmaceutical company. Not medical advice.")
