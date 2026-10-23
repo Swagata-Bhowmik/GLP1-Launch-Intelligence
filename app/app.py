@@ -46,4 +46,4 @@ nav.run()
 
 if nav.title != "Home":
     st.html('<div class="ll-foot">Public + synthetic data only · Not affiliated with any pharmaceutical company · '
-            'Not medical advice · <a href="/" target="_self">LaunchLens home</a></div>')
+            'Not medical advice · <a href="https://glp1-launchlens.streamlit.app/" target="_top">LaunchLens home</a></div>')
