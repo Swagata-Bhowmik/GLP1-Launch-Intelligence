@@ -2,6 +2,9 @@
 
 **An open-source AI platform that helps pharma sales-optimization teams decide which doctors to target after the 2026 GLP-1 market shift, built on real public US data with NLP, transformers, RAG and AI agents, and evaluated end to end.**
 
+### 🔗 Live app: **[glp1-launchlens.streamlit.app](https://glp1-launchlens.streamlit.app/)**
+Models on Hugging Face: [visit-note NER](https://huggingface.co/SwagataBhowmik/glp1-visit-note-ner-biomedbert) · [adverse-event detector](https://huggingface.co/SwagataBhowmik/glp1-ade-sentence-biomedbert) · [side-effect context](https://huggingface.co/SwagataBhowmik/glp1-visit-note-ae-mode-bert) · [app data](https://huggingface.co/datasets/SwagataBhowmik/glp1-launch-intelligence-data)
+
 ![GLP-1 Launch Intelligence concept](docs/architecture/concept_poster.png)
 
 ## Why
@@ -57,6 +60,8 @@ The failures are documented, not hidden.
 | Sales rep | **Pre-visit brief** | territory → doctor → instant brief: profile from data, verbatim label facts with citations, boxed warning always shown, what similar doctors raise; optional AI draft |
 | Sales rep | **Log a visit** | paste a note → drugs / side effects / doses highlighted, possible adverse event flagged for safety review, objections tagged (~0.2 s) |
 | AI assistant | **Ask AI** | 21 evaluated example questions with hand grades and tool traces, plus a live agent (local LLM, ~1–3 min on CPU) |
+
+The hosted app runs on Streamlit Community Cloud's free server, so the two **live-LLM** features (the live agent and the AI-written brief) are switched off there. They need ~6 GB of memory and work when you run the app locally.
 
 ## Notebooks: a learning ladder from basics to agents
 Each notebook teaches the theory in plain language, then applies it; every claim in the text is checked against the outputs. Full list: [`notebooks/README.md`](notebooks/README.md).
