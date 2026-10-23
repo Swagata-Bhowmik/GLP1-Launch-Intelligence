@@ -63,7 +63,6 @@ h2 { font-weight: 800 !important; }
 [data-testid="stTopNavLink"][aria-current="page"] { background: linear-gradient(100deg, rgba(34,211,197,.22), rgba(79,107,255,.18)) !important; }
 [data-testid="stTopNav"] p { font-weight: 600 !important; color: #1E2547 !important; }
 [data-testid="stHeaderLogo"] { height: 30px !important; }
-@media (min-width: 769px) { [data-testid="stSidebar"], [data-testid="stSidebarCollapsedControl"] { display: none !important; } }
 .ll-foot { text-align: center; color: #5A6386; font-size: 12.5px; padding: 26px 0 6px; }
 .ll-foot a { color: #0E9F94; font-weight: 600; }
 
