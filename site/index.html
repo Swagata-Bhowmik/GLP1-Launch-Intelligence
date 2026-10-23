@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LaunchLens · GLP-1 market intelligence</title>
+  <meta name="description" content="LaunchLens: open-source AI analytics for the 2026 GLP-1 market shift, built on real public US data.">
+  <meta property="og:title" content="LaunchLens · GLP-1 market intelligence">
+  <meta property="og:description" content="Which doctors to prioritise after the 2026 GLP-1 shift, and why. Real public data, NLP, RAG and an AI agent.">
+  <meta property="og:image" content="assets/hero.webp">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2322d3c5'/%3E%3Cstop offset='1' stop-color='%234f6bff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='13' cy='13' r='9' fill='none' stroke='url(%23g)' stroke-width='4'/%3E%3Cpath d='M19.5 19.5 27 27' stroke='url(%23g)' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- custom cursor: dot + ring + light trail (desktop only) -->
+  <canvas id="trail" aria-hidden="true"></canvas>
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <header class="nav" id="top">
+    <a class="brand" href="#top" aria-label="LaunchLens home">
+      <span class="brand-mark"></span>LaunchLens
+    </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#story">Story</a>
+      <a href="#tools">Tools</a>
+      <a href="#how">How it works</a>
+      <a href="#proof">Proof</a>
+    </nav>
+    <div class="nav-right">
+      <a class="icon-link" href="https://github.com/Swagata-Bhowmik/GLP1-Launch-Intelligence" target="_blank" rel="noopener" aria-label="Source code on GitHub">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.84 1.18 3.1 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+      </a>
+      <a class="btn btn-primary" href="https://glp1-launchlens.streamlit.app/">Open the app <span aria-hidden="true">→</span></a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ── HERO ─────────────────────────────────────────────────────────── -->
+    <section class="hero" aria-label="Introduction">
+      <div class="hero-bg" style="background-image:url('assets/hero.webp')" role="img"
+           aria-label="Glowing GLP-1 molecules and an injection pen above a night-lit globe"></div>
+      <div class="hero-veil"></div>
+      <div class="hero-content">
+        <span class="pill reveal"><span class="pulse"></span>AI for pharma decisions</span>
+        <h1 class="reveal">See what’s <span class="grad">next</span><br>in <span class="grad grad-blue">GLP-1</span></h1>
+        <p class="lede reveal">Real public data. Explainable AI.<br>A clearer view of the 2026 market shift.</p>
+        <div class="hero-cta reveal">
+          <a class="btn btn-primary btn-lg" href="#tools">Explore LaunchLens <span aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost" href="https://glp1-launchlens.streamlit.app/"><span class="play" aria-hidden="true">▶</span> See it live</a>
+        </div>
+      </div>
+      <div class="float-cards" aria-hidden="true">
+        <div class="glass fc fc1" data-tilt><b data-count="199831">0</b><span>GLP-1 prescribers</span></div>
+        <div class="glass fc fc2" data-tilt><b data-count="19.6" data-dec="1" data-suffix="M">0</b><span>GLP-1 claims · Medicare 2024</span></div>
+        <div class="glass fc fc3" data-tilt><b data-count="30.1" data-dec="1" data-suffix="%">0</b><span>tirzepatide share</span></div>
+      </div>
+      <a class="scroll-hint" href="#story" aria-label="Scroll to the story"><span class="mouse"><span></span></span>Scroll to explore</a>
+    </section>
+
+    <!-- ── STORY ────────────────────────────────────────────────────────── -->
+    <section class="story" id="story" aria-labelledby="story-title">
+      <p class="eyebrow reveal">A market in motion</p>
+      <h2 id="story-title" class="reveal">How GLP-1 <span class="grad">changed everything</span> in 2026</h2>
+      <svg class="story-path" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+        <defs><linearGradient id="pathg" x1="0" x2="1"><stop offset="0" stop-color="#22d3c5"/><stop offset="1" stop-color="#5b6bff"/></linearGradient></defs>
+        <path id="storyLine" d="M0 70 C 150 10, 300 110, 450 60 S 750 0, 900 60 S 1100 110, 1200 40" fill="none" stroke="url(#pathg)" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+      <div class="steps">
+        <article class="step reveal">
+          <div class="step-img"><img src="assets/story-pill.webp" alt="A glowing bottle of capsules on a glass pedestal" loading="lazy" width="900" height="900"></div>
+          <span class="step-n">01</span>
+          <h3>The first weight-loss <em>pill</em></h3>
+          <p>Foundayo (orforglipron) approved · April 2026</p>
+        </article>
+        <article class="step reveal">
+          <div class="step-img"><img src="assets/story-capitol.webp" alt="The U.S. Capitol under trails of light" loading="lazy" width="900" height="900"></div>
+          <span class="step-n">02</span>
+          <h3>Medicare coverage arrives</h3>
+          <p>The GLP-1 Bridge pays for weight-loss use · July 2026</p>
+        </article>
+        <article class="step reveal">
+          <div class="step-img"><img src="assets/story-map.webp" alt="A glowing map of the United States with connected points of light" loading="lazy" width="900" height="900"></div>
+          <span class="step-n">03</span>
+          <h3>Every doctor’s choice matters</h3>
+          <p>Tirzepatide share runs from 18% in Oregon to 45% in Utah</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ── NUMBERS ──────────────────────────────────────────────────────── -->
+    <section class="numbers" aria-label="Key numbers">
+      <div class="num glass reveal"><b data-count="308303">0</b><span>doctors scored &amp; ranked</span></div>
+      <div class="num glass reveal"><b data-count="24.6" data-dec="1" data-prefix="$" data-suffix="bn">0</b><span>GLP-1 spend in Medicare</span></div>
+      <div class="num glass reveal"><b data-count="23" data-suffix="%">0</b><span>of top doctors with no industry contact</span></div>
+      <div class="num glass reveal"><b data-count="8013">0</b><span>labels, papers &amp; notes the AI can search</span></div>
+    </section>
+
+    <!-- ── TOOLS (cards open the live app pages) ────────────────────────── -->
+    <section class="tools" id="tools" aria-labelledby="tools-title">
+      <div class="section-head">
+        <h2 id="tools-title" class="reveal">Everything you need,<br><span class="grad">one click away</span></h2>
+        <p class="reveal">Each card opens the live app.</p>
+      </div>
+      <div class="bento">
+        <a class="card glass c-market reveal" href="https://glp1-launchlens.streamlit.app/market" data-hover>
+          <span class="card-n">01</span>
+          <h3>Market dashboard</h3>
+          <p>Shares, states, coverage shifts</p>
+          <div class="mkt-kpis" aria-hidden="true">
+            <div><b>30.1%</b><small>tirzepatide share</small></div>
+            <div><b>−40%</b><small>Medicaid use after 4 states cut coverage</small></div>
+            <div><b>18→45%</b><small>share range, Oregon to Utah</small></div>
+            <div><b>19.6M</b><small>Medicare GLP-1 claims</small></div>
+          </div>
+          <div class="mkt-legend" aria-hidden="true"><span><i style="background:#4F6BFF"></i>tirzepatide</span><span><i style="background:#22D3C5"></i>semaglutide</span></div>
+          <svg class="viz-line" viewBox="0 0 400 170" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="la" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#4f6bff" stop-opacity=".45"/><stop offset="1" stop-color="#4f6bff" stop-opacity="0"/></linearGradient>
+            </defs>
+            <g class="bars">
+              <rect x="20" y="110" width="22" height="50" rx="5"/><rect x="62" y="96" width="22" height="64" rx="5"/><rect x="104" y="104" width="22" height="56" rx="5"/>
+              <rect x="146" y="84" width="22" height="76" rx="5"/><rect x="188" y="72" width="22" height="88" rx="5"/><rect x="230" y="78" width="22" height="82" rx="5"/>
+              <rect x="272" y="56" width="22" height="104" rx="5"/><rect x="314" y="44" width="22" height="116" rx="5"/><rect x="356" y="30" width="22" height="130" rx="5"/>
+            </g>
+            <path d="M10 130 C 60 120, 90 100, 140 98 S 220 70, 260 66 S 340 30, 392 18 L392 165 L10 165Z" fill="url(#la)"/>
+            <path class="draw" d="M10 130 C 60 120, 90 100, 140 98 S 220 70, 260 66 S 340 30, 392 18" fill="none" stroke="#4f6bff" stroke-width="3.5" stroke-linecap="round"/>
+            <path class="draw d2" d="M10 150 C 70 140, 120 135, 170 126 S 260 110, 300 104 S 360 92, 392 86" fill="none" stroke="#22d3c5" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <span class="go" aria-hidden="true">→</span>
+        </a>
+        <a class="card glass c-doctors reveal" href="https://glp1-launchlens.streamlit.app/targeting" data-hover>
+          <span class="card-n">02</span>
+          <h3>Find the right doctors</h3>
+          <p>A transparent score, with reasons</p>
+          <div class="map-viz" style="background-image:url('assets/story-map.webp')" aria-hidden="true">
+            <span class="chip c1"><i>AJ</i>#35 · Endocrinology</span>
+            <span class="chip c2"><i>MK</i>#75 · Internal medicine</span>
+          </div>
+          <span class="go" aria-hidden="true">→</span>
+        </a>
+        <a class="card glass c-brief reveal" href="https://glp1-launchlens.streamlit.app/rep_brief" data-hover>
+          <span class="card-n">03</span>
+          <h3>Pre-visit brief</h3>
+          <p>Label facts, quoted with sources</p>
+          <div class="brief-viz" aria-hidden="true">
+            <div class="who"><i>AJ</i><div><b>Endocrinology · OH</b><small>rank 35 of 308,303</small></div><span class="score">91</span></div>
+            <div class="row">Key label facts <span>›</span></div>
+            <div class="row warn">Boxed warning, always shown <span>›</span></div>
+            <div class="row">What similar doctors raise <span>›</span></div>
+          </div>
+          <span class="go" aria-hidden="true">→</span>
+        </a>
+        <a class="card glass c-note reveal" href="https://glp1-launchlens.streamlit.app/rep_note" data-hover>
+          <span class="card-n">04</span>
+          <h3>Log a visit</h3>
+          <p>AI spots drugs, side effects &amp; safety flags</p>
+          <div class="note-viz" aria-hidden="true">
+            Discussed <mark class="drug">Foundayo</mark> vs <mark class="drug">Ozempic</mark> <mark class="dose">1 mg</mark>.
+            One pt had severe <mark class="ae">vomiting</mark>, stopped it.
+            <span class="alert">⚑ Possible adverse event: route to safety review</span>
+          </div>
+          <span class="go" aria-hidden="true">→</span>
+        </a>
+        <a class="card glass c-ai reveal" href="https://glp1-launchlens.streamlit.app/ask_ai" data-hover>
+          <span class="card-n">05</span>
+          <h3>Ask AI</h3>
+          <p>Answers that show their sources</p>
+          <div class="ai-viz" aria-hidden="true">
+            <span class="orb"></span>
+            <div class="bubble q">Which Ohio endocrinologists first?</div>
+            <div class="bubble a">Top 5 by score, with reasons <small>· tool: doctor ranking</small></div>
+            <div class="bubble a cite">Source: Medicare Part D 2024</div>
+          </div>
+          <span class="go" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ── HOW IT WORKS ─────────────────────────────────────────────────── -->
+    <section class="how" id="how" aria-labelledby="how-title">
+      <div class="section-head">
+        <h2 id="how-title" class="reveal">From public data <span class="grad">to a decision</span></h2>
+      </div>
+      <ol class="pipeline">
+        <li class="node reveal"><span class="ic">▤</span><b>Public data</b><small>Medicare · FDA · PubMed</small></li>
+        <li class="node reveal"><span class="ic">◉</span><b>One view per doctor</b><small>316k profiles</small></li>
+        <li class="node reveal"><span class="ic">✦</span><b>Language models</b><small>NER · side effects · objections</small></li>
+        <li class="node reveal"><span class="ic">⌕</span><b>Search + AI agent</b><small>cited answers, checked</small></li>
+        <li class="node reveal"><span class="ic">◆</span><b>Your next visit</b><small>who, why, what to say</small></li>
+      </ol>
+    </section>
+
+    <!-- ── PROOF ────────────────────────────────────────────────────────── -->
+    <section class="proof" id="proof" aria-labelledby="proof-title">
+      <div class="section-head">
+        <h2 id="proof-title" class="reveal">Measured, <span class="grad">not promised</span></h2>
+        <p class="reveal">Every model is tested against a baseline. The failures are published too.</p>
+      </div>
+      <div class="proof-grid">
+        <div class="metric glass reveal">
+          <span class="m-label">Side-effect detection</span>
+          <div class="bar"><span style="--w:.90" class="ours"></span></div><div class="bar"><span style="--w:.69"></span></div>
+          <div class="m-legend"><b>0.90 F1</b> AI model <em>vs 0.69 classic</em></div>
+        </div>
+        <div class="metric glass reveal">
+          <span class="m-label">Correct answers, label questions</span>
+          <div class="bar"><span style="--w:.70" class="ours"></span></div><div class="bar"><span style="--w:.133"></span></div>
+          <div class="m-legend"><b>21 / 30</b> with sources <em>vs 4 / 30 without</em></div>
+        </div>
+        <div class="metric glass reveal">
+          <span class="m-label">Finds the right label passage</span>
+          <div class="bar"><span style="--w:.967" class="ours"></span></div><div class="bar"><span style="--w:.733"></span></div>
+          <div class="m-legend"><b>97%</b> hybrid search <em>vs 73% keywords</em></div>
+        </div>
+        <div class="metric glass reveal">
+          <span class="m-label">Safety tests passed</span>
+          <div class="dots"><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="ok"></i><i></i><i></i><i></i></div>
+          <div class="m-legend"><b>7 / 10</b> <em>incl. 1 of 3 prompt-injection attacks that worked</em></div>
+        </div>
+      </div>
+      <a class="text-link reveal" href="https://github.com/Swagata-Bhowmik/GLP1-Launch-Intelligence/blob/main/notebooks/17_evaluation_guardrails_report.ipynb" target="_blank" rel="noopener">Read the full evaluation →</a>
+    </section>
+
+    <!-- ── CTA / ABOUT ──────────────────────────────────────────────────── -->
+    <section class="cta" aria-label="Open the app">
+      <div class="cta-box glass reveal">
+        <h2>Open <span class="grad">LaunchLens</span></h2>
+        <p>Dashboards, doctor targeting, pre-visit briefs and an AI assistant, all on real public data.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary btn-lg" href="https://glp1-launchlens.streamlit.app/">Launch the app <span aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost" href="https://github.com/Swagata-Bhowmik/GLP1-Launch-Intelligence" target="_blank" rel="noopener">View the code</a>
+        </div>
+      </div>
+      <div class="about reveal">
+        <span class="avatar">SB</span>
+        <div><b>Built by Swagata Bhowmik</b><small>MSc Data Science, NMIMS</small></div>
+        <nav aria-label="Author links">
+          <a href="https://github.com/Swagata-Bhowmik" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://huggingface.co/SwagataBhowmik" target="_blank" rel="noopener">Hugging Face</a>
+          <a href="https://www.linkedin.com/in/swagata-bhowmik/" target="_blank" rel="noopener">LinkedIn</a>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    Independent portfolio project on public and synthetic data. Not affiliated with any pharmaceutical company. Not medical advice.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+  <script src="main.js" defer></script>
+</body>
+</html>
