@@ -16,7 +16,7 @@ import plotly.io as pio
 import streamlit as st
 
 DATA = Path(__file__).parent / "data"
-STATIC = Path(__file__).parent / "static"
+STATIC = Path(__file__).parent / "static" / "site" / "assets"
 SITE_URL = "https://swagata-bhowmik.github.io/GLP1-Launch-Intelligence/"
 
 INK, VIOLET, AQUA, PEACH, AMBER, MIST = "#0B1030", "#7C5CFF", "#22D3C5", "#FF8A65", "#FFC857", "#F4F8FF"
@@ -54,16 +54,24 @@ h2 { font-weight: 800 !important; }
     radial-gradient(900px 650px at 100% 80%, #EEE9FF 0%, transparent 55%),
     linear-gradient(180deg, #F4F8FF 0%, #EEF4FF 100%) !important; }
 .block-container { padding-top: 3.6rem; max-width: 1280px; }
-[data-testid="stHeader"] { background: transparent; }
+/* Top menu: frosted-glass bar (replaces the sidebar) */
+[data-testid="stHeader"] { background: rgba(255,255,255,.68) !important; backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4); border-bottom: 1px solid rgba(255,255,255,.9);
+  box-shadow: 0 10px 30px -22px rgba(30,60,150,.55); }
+[data-testid="stTopNavLink"], [data-testid="stTopNavSection"] { border-radius: 999px !important; padding: 4px 12px !important; transition: background .2s; }
+[data-testid="stTopNavLink"]:hover, [data-testid="stTopNavSection"]:hover { background: rgba(34,211,197,.14) !important; }
+[data-testid="stTopNavLink"][aria-current="page"] { background: linear-gradient(100deg, rgba(34,211,197,.22), rgba(79,107,255,.18)) !important; }
+[data-testid="stTopNav"] p { font-weight: 600 !important; color: #1E2547 !important; }
+[data-testid="stHeaderLogo"] { height: 30px !important; }
+@media (min-width: 769px) { [data-testid="stSidebar"], [data-testid="stSidebarCollapsedControl"] { display: none !important; } }
+.ll-foot { text-align: center; color: #5A6386; font-size: 12.5px; padding: 26px 0 6px; }
+.ll-foot a { color: #0E9F94; font-weight: 600; }
 
-/* Sidebar: deep-blue glass */
-[data-testid="stSidebar"] { background: linear-gradient(185deg, #0E2A6B 0%, #133E92 55%, #0B6E8F 100%);
-                            border-right: 1px solid rgba(255,255,255,.12); }
-[data-testid="stSidebar"] * { color: #E8F0FF !important; }
-[data-testid="stSidebarNav"] a { border-radius: 12px; transition: background .2s; }
-[data-testid="stSidebarNav"] a[aria-current="page"] { background: linear-gradient(100deg, rgba(34,211,197,.35), rgba(79,107,255,.25));
-                                                      box-shadow: inset 0 0 0 1px rgba(255,255,255,.25); }
-[data-testid="stSidebarNav"] a:hover { background: rgba(255,255,255,.1); }
+/* Sidebar: only used by Streamlit as the phone menu drawer (top menu on wider screens); light glass */
+[data-testid="stSidebar"] { background: rgba(244,248,255,.94) !important; backdrop-filter: blur(18px);
+                            border-right: 1px solid rgba(255,255,255,.9); }
+[data-testid="stSidebarNav"] a { border-radius: 12px; }
+[data-testid="stSidebarNav"] a[aria-current="page"] { background: linear-gradient(100deg, rgba(34,211,197,.22), rgba(79,107,255,.16)); }
 
 /* Glass surfaces: custom cards, charts, tables, expanders */
 .aur-card, [data-testid="stPlotlyChart"], [data-testid="stDataFrame"], [data-testid="stExpander"] details {

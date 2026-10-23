@@ -1,10 +1,10 @@
-# Publishes the LaunchLens landing site (site/) to GitHub Pages on every push that changes it.
+# Publishes the LaunchLens landing site (app/static/site/, also the app's front page) to GitHub Pages on every push that changes it.
 name: Deploy site to GitHub Pages
 
 on:
   push:
     branches: [main]
-    paths: ["site/**", ".github/workflows/pages.yml"]
+    paths: ["app/static/site/**", ".github/workflows/pages.yml"]
   workflow_dispatch:
 
 permissions:
@@ -27,6 +27,6 @@ jobs:
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: site
+          path: app/static/site
       - id: deployment
         uses: actions/deploy-pages@v4
