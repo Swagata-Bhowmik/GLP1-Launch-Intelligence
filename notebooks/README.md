@@ -24,4 +24,4 @@ Colours show in Jupyter, VS Code and Colab; GitHub's viewer keeps the icons and 
 | 14 | `14_rag_pre_visit_brief.ipynb` | RAG with citations | ✅ |
 | 15 | `15_llm_agent_ask_ai.ipynb` | Tool-using agent | ✅ |
 | 16 | `16_lora_finetuning_small_llm.ipynb` | LoRA/QLoRA (Colab) | ⏳ stretch |
-| 17 | `17_evaluation_guardrails_report.ipynb` | Evaluation, hallucination, guardrails | ⏳ |
+| 17 | `17_evaluation_guardrails_report.ipynb` | Evaluation, hallucination, guardrails | ✅ |
