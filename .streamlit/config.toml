@@ -12,6 +12,5 @@ toolbarMode = "viewer"          # hide the Deploy button for visitors
 
 [server]
 enableStaticServing = true      # serves app/static/ (the landing site) at /app/static/
-# The file watcher walks every imported module; transformers' optional vision modules then raise
-# "No module named torchvision" on each rerun. Not needed outside development (restart to pick up code changes).
-fileWatcherType = "none"
+# Keep the default file watcher: Streamlit Community Cloud relies on it to load new code after a git push.
+# (Locally, .claude/launch.json starts the server with --server.fileWatcherType none to silence torchvision noise.)
