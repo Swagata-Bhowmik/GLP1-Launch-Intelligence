@@ -17,7 +17,7 @@ st.html("""
   const f = document.createElement("iframe");
   f.id = "ll-landing";
   f.title = "LaunchLens";
-  f.src = new URL("app/static/site/index.html", document.baseURI).href;
+  f.src = new URL("app/static/site/index.html?v=3", document.baseURI).href;
   document.body.appendChild(f);
   // leaving the Home page (Streamlit switches pages without a reload) must remove the full-screen frame
   const path = location.pathname;
