@@ -55,3 +55,6 @@ app/data/
 
 # Hugging Face Space staging folder (built by deploy/publish.py)
 deploy/_space/
+
+# Design reference images from ChatGPT (local only; web-ready copies live in site/assets/)
+Images/
