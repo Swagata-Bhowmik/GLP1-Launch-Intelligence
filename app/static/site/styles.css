@@ -81,7 +81,8 @@ h3 { font-size: 22px; font-weight: 700; letter-spacing: -.02em; }
 .icon-link:hover { background: rgba(255,255,255,.7); }
 
 /* ── hero ────────────────────────────────────────────── */
-.hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; overflow: hidden; }
+.hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; overflow: hidden;
+        padding: 96px 0 90px; }
 .hero-bg { position: absolute; inset: -4%; background-size: cover; background-position: 62% center; will-change: transform; }
 .hero-veil { position: absolute; inset: 0; background:
   linear-gradient(90deg, rgba(244,248,255,.96) 0%, rgba(244,248,255,.86) 30%, rgba(244,248,255,.25) 55%, rgba(244,248,255,0) 70%),

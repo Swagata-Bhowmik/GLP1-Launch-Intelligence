@@ -2,21 +2,26 @@ import streamlit as st
 
 # The landing page fills the whole window: hide Streamlit's own menu, padding and footer here; the landing
 # site (app/static/site/index.html) has its own navigation, and its cards open the tool pages.
+# The frame address is resolved by the browser relative to the app's own URL, because Streamlit Community Cloud
+# serves the app (and its static files) under /~/+/ while a local run serves them at the root.
 st.html("""
 <style>
   [data-testid="stHeader"], [data-testid="stToolbar"], [data-testid="stDecoration"] { display: none !important; }
-  .block-container { padding: 0 !important; max-width: 100% !important; }
-  [data-testid="stMainBlockContainer"] { padding: 0 !important; }
-  [data-testid="stAppViewContainer"] > section, [data-testid="stMain"] { padding: 0 !important; }
-  .st-key-landing iframe { height: 100vh !important; height: 100dvh !important; width: 100% !important; border: 0; display: block; }
-  .st-key-landing { gap: 0 !important; }
+  .block-container, [data-testid="stMainBlockContainer"] { padding: 0 !important; max-width: 100% !important; }
   [data-testid="stApp"] { overflow: hidden; }
+  #ll-landing { position: fixed; inset: 0; width: 100vw; height: 100vh; height: 100dvh; border: 0; z-index: 999991; background: #F4F8FF; }
 </style>
-""")
-
-# Streamlit Community Cloud serves the app (and its static files) under /~/+/ on the *.streamlit.app domain
-host = (st.context.headers.get("Host") or "").lower()
-prefix = "/~/+" if host.endswith(".streamlit.app") else ""
-
-with st.container(key="landing"):
-    st.iframe(f"{prefix}/app/static/site/index.html", height=900)
+<script>
+(() => {
+  document.getElementById("ll-landing")?.remove();
+  const f = document.createElement("iframe");
+  f.id = "ll-landing";
+  f.title = "LaunchLens";
+  f.src = new URL("app/static/site/index.html", document.baseURI).href;
+  document.body.appendChild(f);
+  // leaving the Home page (Streamlit switches pages without a reload) must remove the full-screen frame
+  const path = location.pathname;
+  const watch = setInterval(() => { if (location.pathname !== path) { f.remove(); clearInterval(watch); } }, 300);
+})();
+</script>
+""", unsafe_allow_javascript=True)
