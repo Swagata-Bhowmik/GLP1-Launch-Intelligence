@@ -1,0 +1,13 @@
+# Runtime-only dependencies for the Space (torch CPU is installed separately in the Dockerfile).
+# Versions match requirements-lock.txt, which the notebooks were run with.
+streamlit==1.66.0
+pandas==3.0.6
+pyarrow==26.0.0
+numpy
+plotly==7.1.0
+scikit-learn==1.9.1
+transformers==5.20.1
+sentence-transformers==6.1.0
+faiss-cpu==1.15.1
+rank-bm25==0.2.2
+huggingface_hub==1.33.0

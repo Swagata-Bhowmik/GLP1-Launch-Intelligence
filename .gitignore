@@ -52,3 +52,6 @@ CLAUDE.md
 
 # ---- App data (rebuilt by: python -m glp1_intel.app_data) ----
 app/data/
+
+# Hugging Face Space staging folder (built by deploy/publish.py)
+deploy/_space/
