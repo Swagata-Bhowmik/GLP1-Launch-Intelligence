@@ -5,7 +5,7 @@ import aurora as A
 A.setup("Overview")
 k = A.load_kpis()
 
-A.hero("GLP-1", "Launch Intelligence",
+A.hero("The GLP-1 market,", "decoded",
        "Which doctors to prioritise after the 2026 GLP-1 market shift (oral Foundayo approval in April, "
        "Medicare GLP-1 Bridge from July), and why. Built on real public US data.")
 
@@ -34,7 +34,7 @@ insights = [
 ]
 for col, (title, color, body) in zip((c1, c2, c3), insights):
     col.html(f"""<div class="aur-card" style="border-top:4px solid {color}; min-height: 190px">
-                 <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:17px;color:#140F33;margin-bottom:6px">{title}</div>
+                 <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:17px;color:#0B1030;margin-bottom:6px">{title}</div>
                  <div style="color:#4A4570;font-size:14.5px;line-height:1.55">{body}</div></div>""")
 
 st.markdown("#### Explore")

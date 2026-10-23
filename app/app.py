@@ -1,4 +1,4 @@
-"""GLP-1 Launch Intelligence · analyst dashboard.
+"""LaunchLens (GLP-1 Launch Intelligence) · Streamlit app: analyst view, sales-rep view, Ask AI.
 
 Run from the project root:   streamlit run app/app.py
 Data: app/data/*.parquet, built by  python -m glp1_intel.app_data
@@ -10,8 +10,9 @@ import streamlit as st
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))   # works without `pip install -e .` (cloud)
 from glp1_intel import cloud  # noqa: E402
+from aurora import SITE_URL as aurora_site  # noqa: E402
 
-st.set_page_config(page_title="GLP-1 Launch Intelligence", page_icon="◉", layout="wide")
+st.set_page_config(page_title="LaunchLens · GLP-1 market intelligence", page_icon="◉", layout="wide")
 
 
 @st.cache_resource(show_spinner="First start: downloading data and models from Hugging Face (about 2 minutes)…")
@@ -40,8 +41,9 @@ pages = {
 nav = st.navigation(pages)
 
 with st.sidebar:
-    st.markdown("### ◉ GLP-1 Launch Intelligence")
-    st.caption("Open-source pharma commercial analytics on public US data")
+    st.markdown("### ◉ LaunchLens")
+    st.caption("GLP-1 market intelligence on real public US data")
+    st.markdown(f"[← Back to the LaunchLens story]({aurora_site})")
     st.markdown("---")
 
 nav.run()

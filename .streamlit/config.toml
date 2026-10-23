@@ -1,11 +1,10 @@
-# Aurora theme for the Streamlit app (approved 18 Oct 2026).
-# Full palette, gradient and animations: docs/architecture/theme_preview.html
+# LaunchLens theme (Oct 2026 redesign; matches the landing site in site/). Glass, gradients and cursor: app/aurora.py
 [theme]
 base = "light"
-primaryColor = "#7C5CFF"              # electric violet: buttons, active widgets
-backgroundColor = "#F6F4FF"           # mist page background
+primaryColor = "#14B8A6"              # teal: buttons, active widgets
+backgroundColor = "#F4F8FF"           # sky-mist page background
 secondaryBackgroundColor = "#FFFFFF"  # cards / sidebar widgets
-textColor = "#1E1B3A"
+textColor = "#1E2547"
 font = "sans serif"
 
 [client]
