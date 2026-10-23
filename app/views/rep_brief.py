@@ -86,7 +86,10 @@ if "cost_coverage" in obj.head(3).index:
 st.markdown("#### Draft with AI (optional)")
 st.caption("Uses the notebook-14 pipeline: code writes the profile, the boxed warning is added by metadata, and a small local "
            "LLM writes short cited parts. ~3–4 minutes on a laptop CPU; each part is checked for faithfulness.")
-if st.button("Write AI brief"):
+from glp1_intel.cloud import LIGHT
+if LIGHT:
+    st.info("Switched off on this free server (the local LLM needs ~6 GB of memory). Run the app on a laptop to try it.")
+elif st.button("Write AI brief"):
     from glp1_intel.agent.tools import _retriever
     from glp1_intel.rag import generate as G
     row = {**d.to_dict(), "research_themes": None}

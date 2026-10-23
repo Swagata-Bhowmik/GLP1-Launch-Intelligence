@@ -63,7 +63,13 @@ with tab_ex:
         show_steps(r["steps"])
 
 with tab_live:
-    A.callout("Runs the real agent: <b>Qwen2.5-1.5B-Instruct</b> on this machine's CPU, about <b>1–3 minutes</b> per question "
+    from glp1_intel.cloud import LIGHT
+    if LIGHT:
+        A.callout("The live agent needs ~6 GB of memory for its local LLM (Qwen2.5-1.5B), more than this free server has, "
+                  "so it is switched off here. Run the app on a laptop to use it (see the GitHub README); the 21 evaluated "
+                  "examples in the first tab show exactly what it does.", "warn")
+        st.stop()
+    A.callout("Runs the real agent:<b>Qwen2.5-1.5B-Instruct</b> on this machine's CPU, about <b>1–3 minutes</b> per question "
               "(the first question also loads the model). Try things like <i>“Top cardiologists in Texas”</i>, "
               "<i>“Tirzepatide share in Utah”</i> or <i>“Does Foundayo interact with simvastatin?”</i>", "info")
     question = st.text_input("Your question", placeholder="e.g. Which endocrinologists in Ohio should we prioritise?")

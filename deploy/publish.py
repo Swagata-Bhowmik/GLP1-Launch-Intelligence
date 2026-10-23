@@ -93,6 +93,22 @@ def card(repo: str, task: str, body: str, owner: str) -> str:
             f"by {owner}. Public and synthetic data only; not affiliated with any pharmaceutical company; not medical advice.\n")
 
 
+DATA_README = """---
+license: other
+tags: [pharma, glp-1, medicare, portfolio]
+---
+# GLP-1 Launch Intelligence · app data
+
+Small derived tables that the [GLP-1 Launch Intelligence](https://github.com/Swagata-Bhowmik/GLP1-Launch-Intelligence)
+app downloads at start-up: aggregated Medicare Part D 2024 prescribing per doctor and targeting scores (public CMS data;
+doctor names come from the public NPPES registry), FDA label sections (openFDA), FAERS report counts, and the retrieval
+index (text chunks + sentence embeddings). Rebuilt by the project's notebooks 02–05 and 13.
+Public data only; not affiliated with any pharmaceutical company; not medical advice.
+"""
+
+args_space_only_skip = True     # Docker Spaces now need a paid plan; the app is hosted on Streamlit Community Cloud
+
+
 def publish() -> None:
     from dotenv import load_dotenv
     from huggingface_hub import HfApi
@@ -103,13 +119,27 @@ def publish() -> None:
     api = HfApi(token=token)
     owner = api.whoami()["name"]
     print("logged in as", owner)
-    for local, (repo, task, body) in MODEL_CARDS.items():
+    for local, (repo, task, body) in (MODEL_CARDS.items() if os.getenv("SKIP_MODELS") != "1" else []):
         rid = f"{owner}/{repo}"
         api.create_repo(rid, repo_type="model", exist_ok=True)
         (ROOT / "models" / local / "README.md").write_text(card(repo, task, body, owner), encoding="utf-8")
         api.upload_folder(repo_id=rid, folder_path=ROOT / "models" / local, repo_type="model",
                           commit_message="Upload fine-tuned model and card")
         print("model uploaded:", f"https://huggingface.co/{rid}")
+    data_repo = f"{owner}/glp1-launch-intelligence-data"
+    api.create_repo(data_repo, repo_type="dataset", exist_ok=True)
+    (STAGE / "DATA_README.md").write_text(DATA_README, encoding="utf-8")
+    api.upload_file(path_or_fileobj=STAGE / "DATA_README.md", path_in_repo="README.md", repo_id=data_repo, repo_type="dataset")
+    from glp1_intel.cloud import DATA_FILES
+    for rel in DATA_FILES:
+        src = STAGE / rel
+        if src.is_dir():
+            api.upload_folder(repo_id=data_repo, repo_type="dataset", folder_path=src, path_in_repo=rel)
+        else:
+            api.upload_file(path_or_fileobj=src, path_in_repo=rel, repo_id=data_repo, repo_type="dataset")
+    print("data uploaded:", f"https://huggingface.co/datasets/{data_repo}")
+    if args_space_only_skip:
+        return
     sid = f"{owner}/{SPACE_NAME}"
     api.create_repo(sid, repo_type="space", space_sdk="docker", exist_ok=True)
     api.add_space_variable(sid, "HF_MODEL_OWNER", owner)

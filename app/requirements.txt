@@ -1,0 +1,16 @@
+# Runtime dependencies for the hosted app (Streamlit Community Cloud reads this file, next to app.py, first).
+# The research stack (spaCy, gensim, BERTopic, DuckDB …) is in the root requirements.txt and is not needed here.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.14.1+cpu
+streamlit==1.66.0
+pandas==3.0.6
+pyarrow==26.0.0
+numpy
+plotly==7.1.0
+scikit-learn==1.9.1
+transformers==5.20.1
+sentence-transformers==6.1.0
+faiss-cpu==1.15.1
+rank-bm25==0.2.2
+huggingface_hub==1.33.0
+psutil

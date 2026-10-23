@@ -35,13 +35,23 @@ def ae_mode_model() -> str | None:
 @lru_cache(maxsize=None)
 def _ner():
     from transformers import pipeline
-    return pipeline("token-classification", model=str(MODELS / "visit_note_ner_biomedbert"), aggregation_strategy="first")
+    return pipeline("token-classification", model=str(MODELS / "visit_note_ner_biomedbert"), aggregation_strategy="first",
+                    **_dtype())
 
 
 @lru_cache(maxsize=None)
 def _clf(name: str):
     from transformers import pipeline
-    return pipeline("text-classification", model=str(MODELS / name), top_k=None)
+    return pipeline("text-classification", model=str(MODELS / name), top_k=None, **_dtype())
+
+
+def _dtype() -> dict:
+    """bfloat16 on small servers halves model memory; full precision elsewhere (as evaluated in notebooks 11–12)."""
+    from glp1_intel.cloud import LIGHT
+    if not LIGHT:
+        return {}
+    import torch
+    return {"dtype": torch.bfloat16}
 
 
 @lru_cache(maxsize=None)
