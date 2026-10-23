@@ -14,5 +14,9 @@ st.html("""
 </style>
 """)
 
+# Streamlit Community Cloud serves the app (and its static files) under /~/+/ on the *.streamlit.app domain
+host = (st.context.headers.get("Host") or "").lower()
+prefix = "/~/+" if host.endswith(".streamlit.app") else ""
+
 with st.container(key="landing"):
-    st.iframe("/app/static/site/index.html", height=900)
+    st.iframe(f"{prefix}/app/static/site/index.html", height=900)
