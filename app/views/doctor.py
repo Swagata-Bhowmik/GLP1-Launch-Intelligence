@@ -51,8 +51,8 @@ A.kpis([
     {"label": "Diabetes claims (2024)", "value": int(d["diabetes_total_claims"]), "icon": "▤", "tint": "#E3FBF8"},
     {"label": "GLP-1 claims", "value": int(d["glp1_claims"]), "icon": "◉"},
     {"label": "GLP-1 % of diabetes Rx", "value": 100 * (d["glp1_share_of_diabetes"] or 0), "decimals": 0, "suffix": "%", "icon": "◐", "tint": "#EEF2FF"},
-    {"label": "Lilly / Novo payments", "value": int(d["op_lilly_payments"]), "suffix": f" / {int(d['op_novo_payments'])}",
-     "icon": "★", "tint": "#FFF6DD", "note": "records 2024–2025"},
+    {"label": "GLP-1 industry payments", "value": int(d["op_lilly_payments"] + d["op_novo_payments"]),
+     "icon": "★", "tint": "#FFF6DD", "note": "Open Payments records 2024–2025, both manufacturers"},
 ])
 
 c1, c2 = st.columns([1.1, 1])

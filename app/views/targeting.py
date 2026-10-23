@@ -16,7 +16,8 @@ f1, f2, f3, f4 = st.columns([1.2, 1.6, 1.6, 1])
 states = f1.multiselect("State", sorted(t["state"].dropna().unique()), placeholder="All states")
 specs = f2.multiselect("Specialty", t["specialty"].value_counts().index[:25].tolist(), placeholder="All specialties")
 segs = f3.multiselect("Segment", sorted(t["segment"].unique()), placeholder="All segments")
-gap_only = f4.toggle("No Lilly contact", help="Doctors with no Lilly payment recorded in Open Payments 2024–2025")
+gap_only = f4.toggle("No industry contact", help="Doctors with no payment from either GLP-1 manufacturer in Open Payments 2024–2025")
+no_industry = lambda df: (df["op_lilly_payments"] == 0) & (df["op_novo_payments"] == 0)
 
 v = t
 if states:
@@ -26,14 +27,14 @@ if specs:
 if segs:
     v = v[v["segment"].isin(segs)]
 if gap_only:
-    v = v[v["op_lilly_payments"] == 0]
+    v = v[no_industry(v)]
 
 A.kpis([
     {"label": "Doctors in view", "value": len(v), "icon": "◉"},
     {"label": "Diabetes claims covered", "value": v["diabetes_total_claims"].sum() / 1e6, "decimals": 2, "suffix": "M",
      "icon": "▤", "tint": "#E3FBF8", "note": f"{100 * v['diabetes_total_claims'].sum() / t['diabetes_total_claims'].sum():.1f}% of all"},
     {"label": "Median score", "value": float(v["score"].median()) if len(v) else 0, "decimals": 1, "icon": "★", "tint": "#FFF6DD"},
-    {"label": "No Lilly contact", "value": 100 * float((v["op_lilly_payments"] == 0).mean()) if len(v) else 0,
+    {"label": "No industry contact", "value": 100 * float(no_industry(v).mean()) if len(v) else 0,
      "decimals": 0, "suffix": "%", "icon": "◐", "tint": "#FFEDE6"},
 ])
 

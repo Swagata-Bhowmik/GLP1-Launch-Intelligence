@@ -34,10 +34,12 @@ def _states(scores: pd.DataFrame) -> pd.DataFrame:
         FROM read_parquet('{PART_D_2024_GLP1.as_posix()}') GROUP BY ALL
     """).df()
     st["tirz_share"] = 100 * st["tirz"] / st["tirz_sema"]
-    top = scores[scores["rank"] <= 10_000]
+    top = scores[scores["rank"] <= 10_000].assign(
+        no_industry=lambda d: (d["op_lilly_payments"] == 0) & (d["op_novo_payments"] == 0))
     tgt = top.groupby("state").agg(top_targets=("npi", "size"),
-                                   top_no_lilly=("op_lilly_payments", lambda s: (s == 0).sum())).reset_index()
-    return st.drop(columns=["tirz", "tirz_sema"]).merge(tgt, on="state", how="left").fillna({"top_targets": 0, "top_no_lilly": 0})
+                                   top_no_industry=("no_industry", "sum")).reset_index() \
+        if not top.empty else pd.DataFrame(columns=["state", "top_targets", "top_no_industry"])
+    return st.drop(columns=["tirz", "tirz_sema"]).merge(tgt, on="state", how="left").fillna({"top_targets": 0, "top_no_industry": 0})
 
 
 def _specialties(hcp: pd.DataFrame) -> pd.DataFrame:
@@ -99,8 +101,8 @@ def build() -> dict:
         "glp1_claims": int(brands["claims"].sum()),
         "glp1_cost_bn": round(float(brands["cost"].sum()) / 1e9, 1),
         "tirz_share": round(float(100 * tz / (tz + sm)), 1),
-        "ready_no_lilly_pct": round(100 * float((ready["op_lilly_payments"] == 0).mean()), 1),
-        "ready_novo_not_lilly_pct": round(100 * float(((ready["op_lilly_payments"] == 0) & (ready["op_novo_payments"] > 0)).mean()), 1),
+        # Company-neutral for the public app: no Open Payments record from either GLP-1 manufacturer
+        "ready_no_industry_pct": round(100 * float(((ready["op_lilly_payments"] == 0) & (ready["op_novo_payments"] == 0)).mean()), 1),
         "untapped_doctors": int((scores["segment"].str.startswith("D")).sum()),
         "medicaid_latest": "2026 Q1",
     }

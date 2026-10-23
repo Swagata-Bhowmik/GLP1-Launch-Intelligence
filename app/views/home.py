@@ -15,8 +15,8 @@ A.kpis([
      "note": f"US${k['glp1_cost_bn']} bn gross spend", "icon": "▤", "tint": "#E3FBF8"},
     {"label": "Tirzepatide share", "value": k["tirz_share"], "decimals": 1, "suffix": "%",
      "note": "vs semaglutide, 2024", "icon": "◐", "tint": "#EEF2FF"},
-    {"label": "Ready doctors without Lilly contact", "value": k["ready_no_lilly_pct"], "decimals": 0, "suffix": "%",
-     "note": f"{k['ready_novo_not_lilly_pct']:.0f}% engaged by Novo only", "icon": "★", "tint": "#FFF6DD"},
+    {"label": "Ready doctors with no industry contact", "value": k["ready_no_industry_pct"], "decimals": 0, "suffix": "%",
+     "note": "no GLP-1 maker payment, 2024–25", "icon": "★", "tint": "#FFF6DD"},
 ])
 
 st.markdown("#### Three things the data says")
@@ -29,8 +29,8 @@ insights = [
      "Tirzepatide holds ~18% of the tirzepatide + semaglutide market in Oregon and California but ~45% in Utah and Louisiana. "
      "Local factors, not the molecule, explain the gap."),
     ("High-value doctors are under-reached", "#22D3C5",
-     f"A third of the 10,000 most Bridge-ready doctors had no Lilly payment record in 2024–25, and "
-     f"{k['ready_novo_not_lilly_pct']:.0f}% were engaged by Novo only."),
+     f"{k['ready_no_industry_pct']:.0f}% of the 10,000 most Bridge-ready doctors had no payment record from either "
+     f"GLP-1 manufacturer in 2024–25 (Open Payments): high potential, little industry contact."),
 ]
 for col, (title, color, body) in zip((c1, c2, c3), insights):
     col.html(f"""<div class="aur-card" style="border-top:4px solid {color}; min-height: 190px">
