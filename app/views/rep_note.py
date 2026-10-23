@@ -53,7 +53,8 @@ if note.strip():
         st.markdown("#### Side-effect context")
         if r["ae_mode"]:
             st.markdown(f"**{AE_TEXT[r['ae_mode']]}**  ·  confidence {r['ae_mode_probs'][r['ae_mode']]:.0%}")
-            st.caption("BiomedBERT, notebook 11 (4 classes: none / concern / reported / negated)")
+            model = "BERT" if r.get("ae_mode_model", "").endswith("_bert") else "BiomedBERT"
+            st.caption(f"{model}, notebook 11 (4 classes: none / concern / reported / negated)")
     with c2:
         st.markdown("#### Objections raised")
         if r["objections"]:

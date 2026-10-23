@@ -1,7 +1,7 @@
 """Analyse one visit note with the models from notebooks 11–12 (used by the rep view of the app).
 
     entities    BiomedBERT NER (notebook 12): DRUG, ADVERSE_EVENT, DOSE spans
-    ae_mode     BiomedBERT classifier (notebook 11): none / concern / reported / negated
+    ae_mode     BERT classifier, notebook 11's best (falls back to BiomedBERT): none / concern / reported / negated
     objections  TF-IDF + one-vs-rest logistic regression (notebook 11's best model for objections), refit in seconds
     ade         BiomedBERT ADE sentence detector (notebook 12) at the ≥90%-recall threshold chosen on validation
 """
@@ -20,8 +20,16 @@ EVAL = ROOT / "reports" / "evaluation"
 
 def available() -> dict:
     """Which saved models exist (they are git-ignored, so a fresh clone has none until notebooks 11–12 are run)."""
-    return {"ner": (MODELS / "visit_note_ner_biomedbert").exists(), "ae_mode": (MODELS / "visit_note_ae_mode_biomedbert").exists(),
+    return {"ner": (MODELS / "visit_note_ner_biomedbert").exists(), "ae_mode": ae_mode_model() is not None,
             "ade": (MODELS / "ade_sentence_biomedbert").exists(), "objections": FT.DATA.exists()}
+
+
+def ae_mode_model() -> str | None:
+    """BERT scored best on this task in notebook 11 (macro-F1 0.97 vs BiomedBERT 0.94); fall back to BiomedBERT."""
+    for name in ["visit_note_ae_mode_bert", "visit_note_ae_mode_biomedbert"]:
+        if (MODELS / name).exists():
+            return name
+    return None
 
 
 @lru_cache(maxsize=None)
@@ -66,7 +74,8 @@ def analyze(note: str) -> dict:
                             "text": note[e["start"]:e["end"]], "score": float(e["score"])} for e in _ner()(note)]
     if av["ae_mode"]:
         probs = {FT.AE_LABELS[_label_index(p["label"], FT.AE_LABELS)]: float(p["score"])
-                 for p in _clf("visit_note_ae_mode_biomedbert")(note)[0]}
+                 for p in _clf(ae_mode_model())(note)[0]}
+        out["ae_mode_model"] = ae_mode_model()
         out["ae_mode"] = max(probs, key=probs.get)
         out["ae_mode_probs"] = probs
     if av["objections"]:
