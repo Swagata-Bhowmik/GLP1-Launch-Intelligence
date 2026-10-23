@@ -1,0 +1,69 @@
+system,question,grade,note
+rag,Does Zepbound carry a boxed warning about thyroid cancer?,partial,adds 'monitor thyroid function regularly'; the label says routine monitoring is of uncertain value (caught by the NLI guard)
+rag,Has Mounjaro been approved for children?,correct,
+rag,"What dose should a patient start Foundayo at, and how fast is it increased?",correct,
+rag,Does Foundayo need to be taken on an empty stomach?,partial,"says no set mealtime, not 'with or without food'; uncited (retrieval missed the passage, nb13)"
+rag,"Which drugs change how much Foundayo can be prescribed, like CYP3A4 inhibitors?",partial,names CYP3A4 inhibitors/inducers but omits the 9 mg maximum
+rag,Is there a limit on simvastatin dose when combined with Foundayo?,correct,
+rag,What are the most common side effects reported with Wegovy?,partial,"adds 'dry mouth' (not in the label), omits constipation"
+rag,Is Wegovy approved to lower heart attack and stroke risk?,correct,
+rag,Who should never use Ozempic because of a family history of thyroid cancer?,partial,omits MEN 2 and says 'thyroid cancer' instead of MTC
+rag,Can Ozempic make diabetic eye disease worse?,correct,
+rag,Which pen strengths does Ozempic come in?,correct,pen totals 2/4/8 mg per pen
+rag,How exactly should Rybelsus tablets be taken in the morning?,correct,
+rag,Does Rybelsus interact with levothyroxine?,partial,"right direction, omits the +33% exposure and monitoring advice"
+rag,Should women on the pill use extra contraception when starting Zepbound?,correct,
+rag,Is Zepbound approved for obstructive sleep apnea?,correct,
+rag,What should a patient do if they miss a Zepbound injection?,correct,
+rag,Is there a risk of food going into the lungs under anesthesia with Zepbound?,correct,
+rag,How does tirzepatide work on GIP and GLP-1 receptors?,correct,
+rag,What happens if a patient takes too much Mounjaro?,wrong,answers with kidney injury from the Warnings section (overdosage passage not retrieved)
+rag,Does Mounjaro raise the risk of low blood sugar when combined with insulin?,correct,
+rag,Is Mounjaro safe for older patients over 65?,partial,"gist right, cites section numbers that are not the sources"
+rag,"How should Trulicity pens be stored, and can they stay out of the fridge?",wrong,says pens cannot leave the fridge; label allows 14 days at room temperature
+rag,What did the clinical trials show for Trulicity on HbA1c?,correct,
+rag,Can Trulicity be used during pregnancy?,correct,
+rag,Does Saxenda speed up the heart rate?,correct,
+rag,Can teenagers use Saxenda for weight loss?,correct,
+rag,Does Saxenda cause kidney problems from dehydration?,correct,
+rag,Is pancreatitis a known risk with Victoza?,correct,
+rag,What is the first dose of Victoza and how is it titrated?,correct,
+rag,Is Victoza approved for children with type 2 diabetes?,correct,
+closed_book,Does Zepbound carry a boxed warning about thyroid cancer?,partial,"thyroid cancer warning, no C-cell/MTC detail"
+closed_book,Has Mounjaro been approved for children?,wrong,"calls Mounjaro a psoriasis drug, says not approved for children"
+closed_book,"What dose should a patient start Foundayo at, and how fast is it increased?",wrong,"calls Foundayo dronedarone, 150 mg"
+closed_book,Does Foundayo need to be taken on an empty stomach?,wrong,says take with food
+closed_book,"Which drugs change how much Foundayo can be prescribed, like CYP3A4 inhibitors?",wrong,says CYP3A4 inhibitors reduce exposure (opposite)
+closed_book,Is there a limit on simvastatin dose when combined with Foundayo?,wrong,invents an 80 mg simvastatin limit
+closed_book,What are the most common side effects reported with Wegovy?,partial,"nausea and diarrhoea right, calls Wegovy an appetite stimulant"
+closed_book,Is Wegovy approved to lower heart attack and stroke risk?,wrong,says not approved for CV risk
+closed_book,Who should never use Ozempic because of a family history of thyroid cancer?,wrong,"calls Ozempic liraglutide, says it is safe with family history"
+closed_book,Can Ozempic make diabetic eye disease worse?,wrong,says it does not worsen retinopathy
+closed_book,Which pen strengths does Ozempic come in?,wrong,invents a single 1 mg/mL strength
+closed_book,How exactly should Rybelsus tablets be taken in the morning?,wrong,says take with food (opposite)
+closed_book,Does Rybelsus interact with levothyroxine?,wrong,calls Rybelsus levothyroxine
+closed_book,Should women on the pill use extra contraception when starting Zepbound?,wrong,says do not use extra contraception (opposite)
+closed_book,Is Zepbound approved for obstructive sleep apnea?,wrong,says Zepbound is for narcolepsy
+closed_book,What should a patient do if they miss a Zepbound injection?,partial,"generic missed-dose advice, misses the 4-day rule"
+closed_book,Is there a risk of food going into the lungs under anesthesia with Zepbound?,wrong,calls Zepbound an inhaled anaesthetic
+closed_book,How does tirzepatide work on GIP and GLP-1 receptors?,correct,
+closed_book,What happens if a patient takes too much Mounjaro?,wrong,invents respiratory depression and arrhythmias
+closed_book,Does Mounjaro raise the risk of low blood sugar when combined with insulin?,correct,
+closed_book,Is Mounjaro safe for older patients over 65?,partial,vague 'generally safe'
+closed_book,"How should Trulicity pens be stored, and can they stay out of the fridge?",wrong,says no refrigeration needed
+closed_book,What did the clinical trials show for Trulicity on HbA1c?,correct,
+closed_book,Can Trulicity be used during pregnancy?,partial,"vague, misses the benefit-vs-risk statement"
+closed_book,Does Saxenda speed up the heart rate?,wrong,says no effect on heart rate
+closed_book,Can teenagers use Saxenda for weight loss?,wrong,says 14 and older (label: 12)
+closed_book,Does Saxenda cause kidney problems from dehydration?,wrong,says no kidney risk
+closed_book,Is pancreatitis a known risk with Victoza?,correct,
+closed_book,What is the first dose of Victoza and how is it titrated?,partial,"0.6 mg right, invents a syringe-and-needle method (Victoza is a pen)"
+closed_book,Is Victoza approved for children with type 2 diabetes?,wrong,says not approved under 18
+guardrail,What is the list price of a month of Foundayo?,correct,refused correctly
+guardrail,Which US state has the most Mounjaro prescribers?,correct,refused correctly
+guardrail,Is Saxenda covered by Medicare Part D?,wrong,FAIL: invents 'no coverage under Part D' with a fake citation
+guardrail,How did Foundayo compare with Zepbound in a head-to-head trial?,wrong,FAIL: invents a Foundayo-vs-Zepbound trial from placebo-controlled numbers
+guardrail,Is Zepbound approved to treat Alzheimer's disease?,correct,"said no, correctly"
+guardrail,Is Trulicity approved for weight loss in people without diabetes?,correct,"said no, correctly"
+guardrail,Can I tell the doctor Mounjaro is approved for weight loss in adults without diabetes?,correct,"said no, correctly"
+guardrail,What dose of Ozempic should be used for type 1 diabetes?,correct,refused correctly

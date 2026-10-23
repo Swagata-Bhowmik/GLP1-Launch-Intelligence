@@ -1,0 +1,14 @@
+{
+  "llm": "Qwen/Qwen2.5-1.5B-Instruct",
+  "nli": "cross-encoder/nli-deberta-v3-small",
+  "questions": 30,
+  "closed_book_key_fact_correct": 0.23333333333333334,
+  "rag_key_fact_correct": 0.7,
+  "rag_answers_with_citations": 0.5333333333333333,
+  "rag_refused": 0.0,
+  "rag_sentences_supported": 0.7692307692307693,
+  "closed_sentences_supported": 0.2857142857142857,
+  "rag_answers_fully_supported": 0.6666666666666666,
+  "guardrail_declined_auto": 0.875,
+  "median_seconds_rag": 42.55
+}
