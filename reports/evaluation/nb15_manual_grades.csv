@@ -1,0 +1,22 @@
+question,type,grade,note
+Which endocrinologists in Ohio should we prioritise for Foundayo?,doctors,correct,
+Show the top 3 family practice doctors in Texas by targeting score.,doctors,wrong,"dropped the specialty filter, then presented internal-medicine doctors as family practice"
+Who are the best untapped-potential doctors in Florida?,doctors,wrong,used segment F (low volume) instead of D (untapped); invented a rationale
+List the top cardiologists in California for GLP-1 targeting.,doctors,correct,
+Where should a new rep in Georgia start? Who are the best GLP-1 prescribers there?,doctors,correct,
+What is tirzepatide's share of GLP-1 claims in Louisiana?,market,partial,44% is right; then mislabels segment counts as drug shares
+How many eligible GLP-1 prescribers are there in New York?,market,correct,"used top_doctors instead of market_summary, but its '19,639 doctors match' is the right number"
+What share of US GLP-1 claims is oral semaglutide?,market,correct,
+What side effects are most reported to FAERS for Ozempic?,faers,partial,"counts are for all semaglutide products (FAERS by molecule), presented as Ozempic only"
+How many FAERS reports mention orforglipron so far?,faers,correct,
+Top 3 reported reactions for Trulicity in FAERS?,faers,partial,"right three reactions; 'over 10,000 combined' is wrong (about 30,000)"
+What is the starting dose of Foundayo?,label,correct,
+Does Zepbound interact with birth control pills?,label,correct,
+Is Wegovy approved to reduce cardiovascular risk?,label,wrong,'80% reduction' misreads hazard ratio 0.80 (= 20% lower risk); drops the tool's review flag; invents source descriptions
+How long can Trulicity pens stay at room temperature?,label,wrong,called no tool and said no tool has this (label_answer does); a safe failure
+What do doctors say about cost and insurance in the visit notes?,notes,partial,cost theme right but mixes in unrelated headache and safety details
+Are reps hearing about needle fear from doctors?,notes,correct,
+"Which Ohio endocrinologists should we prioritise, and what is Foundayo's boxed warning?",two tools,partial,doctor list right; silently skipped the boxed-warning half
+Compare the tirzepatide share of GLP-1 claims in Oregon and Utah.,two tools,correct,
+What will the GLP-1 market share be in 2030?,no tool,correct,gives 2024 data as context and says it does not predict the future
+What is the weather in Chicago today?,no tool,correct,declined

@@ -1,0 +1,61 @@
+{
+  "llm": "Qwen/Qwen2.5-1.5B-Instruct",
+  "questions": 21,
+  "tool_choice_ok": 0.8095238095238095,
+  "tool_and_args_ok": 0.7142857142857143,
+  "keyword_router_ok": 0.7619047619047619,
+  "by_type": [
+    {
+      "type": "doctors",
+      "questions": 5,
+      "agent_tool_ok": 1.0,
+      "agent_args_ok": 0.6,
+      "keyword_router_ok": 1.0
+    },
+    {
+      "type": "market",
+      "questions": 3,
+      "agent_tool_ok": 0.6666666666666666,
+      "agent_args_ok": 0.6666666666666666,
+      "keyword_router_ok": 0.6666666666666666
+    },
+    {
+      "type": "faers",
+      "questions": 3,
+      "agent_tool_ok": 1.0,
+      "agent_args_ok": 1.0,
+      "keyword_router_ok": 1.0
+    },
+    {
+      "type": "label",
+      "questions": 4,
+      "agent_tool_ok": 0.75,
+      "agent_args_ok": 0.75,
+      "keyword_router_ok": 0.75
+    },
+    {
+      "type": "notes",
+      "questions": 2,
+      "agent_tool_ok": 1.0,
+      "agent_args_ok": 1.0,
+      "keyword_router_ok": 1.0
+    },
+    {
+      "type": "two tools",
+      "questions": 2,
+      "agent_tool_ok": 0.5,
+      "agent_args_ok": 0.5,
+      "keyword_router_ok": 0.0
+    },
+    {
+      "type": "no tool",
+      "questions": 2,
+      "agent_tool_ok": 0.5,
+      "agent_args_ok": 0.5,
+      "keyword_router_ok": 0.5
+    }
+  ],
+  "numbers_in_answers": 128,
+  "numbers_not_in_tool_results": 1,
+  "median_seconds": 115.9
+}
