@@ -17,7 +17,7 @@ st.html("""
   const f = document.createElement("iframe");
   f.id = "ll-landing";
   f.title = "LaunchLens";
-  f.src = new URL("app/static/site/index.html?v=4", document.baseURI).href;
+  f.src = new URL("app/static/site/index.html?v=5", document.baseURI).href;
   document.body.appendChild(f);
   // the landing page's buttons ask this page to open a tool page (frames can't navigate their parent on Cloud)
   if (!window.__llNav) {
