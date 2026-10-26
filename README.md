@@ -13,7 +13,9 @@ Which doctors to prioritise, why, and what to say: real public US data, explaina
 [![Status](https://img.shields.io/badge/status-live%20portfolio%20project-14B8A6)](https://glp1-launchlens.streamlit.app/)
 [![License](https://img.shields.io/badge/license-TBD-lightgrey)](#-disclaimer-author-and-acknowledgements)
 
-### [🚀 Open the live app](https://glp1-launchlens.streamlit.app/) · [🤗 Models & data on Hugging Face](https://huggingface.co/SwagataBhowmik) · [📓 Notebooks](notebooks/README.md)
+### [🚀 Open the live app](https://glp1-launchlens.streamlit.app/) · [🧭 Reviewer guide](https://glp1-launchlens.streamlit.app/guide) · [🤗 Models & data on Hugging Face](https://huggingface.co/SwagataBhowmik) · [📓 Notebooks](notebooks/README.md)
+
+**Reviewing this project?** Start with the [website's guide page](https://glp1-launchlens.streamlit.app/guide), or download the one-file [project report](docs/project_report.html) (open it in a browser; it works offline).
 
 </div>
 
