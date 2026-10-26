@@ -4,6 +4,8 @@
 
 Writes docs/project_report.html (to attach or open offline) and app/static/site/report.html (linked from the website).
 Figures from reports/figures are embedded, so the file works with no internet connection.
+Also exports every notebook, with its outputs, to app/static/site/notebooks/<name>.html, so reviewers can read them on
+the website without relying on GitHub's or nbviewer's renderers.
 """
 import base64
 import html
@@ -104,7 +106,7 @@ sections.append(("website", "The website, page by page",
 
 nbs = []
 for nb in G.NOTEBOOKS:
-    links = (f'<p class="links">{a(G.NBVIEWER + nb["file"], "view with outputs (nbviewer)")} · '
+    links = (f'<p class="links">{a(G.NB_HTML + nb["file"].replace(".ipynb", ".html"), "read the notebook with outputs")} · '
              f'{a(G.GITHUB_NB + nb["file"], "GitHub")}</p>') if nb["file"] else ""
     fig = img(nb["figure"], f"Notebook {nb['n']}") if nb["figure"] else ""
     nbs.append(f"""<details class="nb"><summary><span class="pn">{nb['n']}</span>{esc(nb['title'])}<em>{esc(nb['stage'])}</em></summary>
@@ -214,6 +216,29 @@ footer {{ text-align:center; color:var(--muted); font-size:13px; padding:0 6vw 4
 window.addEventListener("beforeprint", () => document.querySelectorAll("details").forEach(d => d.open = true));</script>
 </body></html>"""
 
+def export_notebooks() -> None:
+    import nbformat
+    from nbconvert import HTMLExporter
+    out_dir = ROOT / "app" / "static" / "site" / "notebooks"
+    out_dir.mkdir(exist_ok=True)
+    exporter = HTMLExporter(template_name="lab")
+    bar = ('<div style="position:sticky;top:0;z-index:9;background:#0E9F94;color:#fff;padding:10px 18px;font:15px Segoe UI,sans-serif">'
+           'LaunchLens notebook {n} · read-only copy with all outputs · '
+           f'<a style="color:#fff;font-weight:600" href="{G.APP}notebooks">all notebooks</a> · '
+           f'<a style="color:#fff;font-weight:600" href="{G.GITHUB_NB}{{file}}">source on GitHub</a></div>')
+    for nb in G.NOTEBOOKS:
+        if not nb["file"]:
+            continue
+        body, _ = exporter.from_notebook_node(nbformat.read(ROOT / "notebooks" / nb["file"], as_version=4))
+        body = body.replace("<title>Notebook</title>", f"<title>Notebook {nb['n']} · {html.escape(nb['title'])} · LaunchLens</title>", 1)
+        i = body.index(">", body.index("<body")) + 1
+        body = body[:i] + bar.format(n=nb["n"], file=nb["file"]) + body[i:]
+        (out_dir / nb["file"].replace(".ipynb", ".html")).write_text(body, encoding="utf-8")
+    total = sum(f.stat().st_size for f in out_dir.glob("*.html")) / 1e6
+    print(f"exported {len(list(out_dir.glob('*.html')))} notebooks to {out_dir.relative_to(ROOT)} ({total:.1f} MB)")
+
+
+export_notebooks()
 for out in OUT:
     out.write_text(PAGE, encoding="utf-8")
     print(f"wrote {out.relative_to(ROOT)} ({out.stat().st_size / 1e6:.1f} MB)")

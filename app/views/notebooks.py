@@ -13,7 +13,7 @@ st.caption("A learning ladder: data → NLP basics → transformers → retrieva
            "Each notebook teaches the theory in plain language, applies it, and saves what the next one needs.")
 A.callout("<b>How to read this page:</b> each card says why the notebook exists, what it did, its key result, the decision it led to, "
           "and which website page uses it. Open a card for its main chart and links to the full notebook "
-          "(<b>nbviewer</b> shows it with all outputs; <b>GitHub</b> shows the file).")
+          "(<b>Read the notebook</b> opens it with all its outputs on this site; <b>GitHub</b> shows the source file).")
 
 stages = list(dict.fromkeys(nb["stage"] for nb in G.NOTEBOOKS))
 pick = st.segmented_control("Show", ["All"] + stages, default="All")
@@ -30,7 +30,8 @@ for nb in G.NOTEBOOKS:
             st.markdown(f"**Used on the website:** {nb['page']}")
             if nb["file"]:
                 b1, b2 = st.columns(2)
-                b1.link_button("Open with outputs (nbviewer)", G.NBVIEWER + nb["file"], icon=":material/visibility:", width="stretch")
+                b1.link_button("Read the notebook", G.NB_HTML + nb["file"].replace(".ipynb", ".html"), icon=":material/visibility:",
+                               type="primary", width="stretch")
                 b2.link_button("Open on GitHub", G.GITHUB_NB + nb["file"], icon=":material/code:", width="stretch")
         with right:
             if nb["figure"] and (FIGURES / nb["figure"]).exists():

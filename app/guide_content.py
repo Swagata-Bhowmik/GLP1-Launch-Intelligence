@@ -7,9 +7,9 @@ Every number is taken from the notebooks' outputs, reports/evaluation/*.json or 
 APP = "https://glp1-launchlens.streamlit.app/"
 REPO = "https://github.com/Swagata-Bhowmik/GLP1-Launch-Intelligence"
 HF = "https://huggingface.co/SwagataBhowmik"
-NBVIEWER = "https://nbviewer.org/github/Swagata-Bhowmik/GLP1-Launch-Intelligence/blob/main/notebooks/"
 GITHUB_NB = REPO + "/blob/main/notebooks/"
 REPORT = APP + "~/+/app/static/site/report.html"   # Streamlit Cloud serves static files under /~/+/
+NB_HTML = APP + "~/+/app/static/site/notebooks/"   # notebooks exported to HTML by deploy/build_report.py
 
 # ── the project in a few lines ────────────────────────────────────────────────
 SUMMARY = {
