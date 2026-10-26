@@ -113,7 +113,19 @@ h3 { font-size: 22px; font-weight: 700; letter-spacing: -.02em; }
 
 /* ── sections ────────────────────────────────────────── */
 section { position: relative; }
-.story, .tools, .how, .proof, .numbers, .cta { padding: 96px 6vw; }
+.story, .tools, .pages, .how, .proof, .numbers, .cta { padding: 96px 6vw; }
+
+/* all pages: a plain directory of the app */
+.page-groups { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; align-items: start; }
+.page-group h3 { margin: 0 0 14px; font-size: 15px; text-transform: uppercase; letter-spacing: .18em; color: var(--teal); }
+.page-group h3:not(:first-child) { margin-top: 30px; }
+.page-link { display: flex; align-items: center; gap: 18px; padding: 18px 22px; margin-bottom: 14px; border-radius: 20px; transition: transform .25s, box-shadow .25s; }
+.page-link:hover { transform: translateX(6px); box-shadow: 0 24px 50px -26px rgba(40,90,200,.6), 0 0 0 1px rgba(34,211,197,.5); }
+.page-link .pn { flex: none; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; color: #fff; font: 700 16px "Plus Jakarta Sans", sans-serif; background: var(--grad); }
+.page-link b { display: block; font: 700 19px "Plus Jakarta Sans", sans-serif; color: var(--ink); }
+.page-link small { display: block; color: var(--text-2); font-size: 14.5px; margin-top: 2px; }
+.page-link .go { position: static; width: 40px; height: 40px; margin-left: auto; flex: none; font-size: 20px; color: var(--blue); }
+.pages-tip { margin: 22px 4px 0; color: var(--text-2); font-size: 15px; }
 .section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; flex-wrap: wrap; margin-bottom: 54px; }
 .section-head p { color: var(--text-2); max-width: 380px; margin: 0; font-size: 18px; }
 
@@ -274,7 +286,8 @@ mark.drug { background: #EFEAFF; color: #4B32C8; } mark.ae { background: #FFE6DE
   .hero-veil { background: linear-gradient(180deg, rgba(244,248,255,.2) 0%, rgba(244,248,255,.85) 45%, #F4F8FF 100%); }
   .hero-content { padding: 0 16px; }
   .float-cards { display: none; }
-  .story, .tools, .how, .proof, .numbers, .cta { padding: 80px 16px; }
+  .story, .tools, .pages, .how, .proof, .numbers, .cta { padding: 80px 16px; }
+  .page-groups { grid-template-columns: 1fr; gap: 0; }
   .steps, .bento, .numbers, .proof-grid { grid-template-columns: 1fr; } .c-market { grid-column: auto; }
   .pipeline { grid-template-columns: 1fr 1fr; gap: 26px 14px; } .pipeline::before, .pipeline::after { display: none; }
   .node .ic { width: 70px; height: 70px; font-size: 24px; }
