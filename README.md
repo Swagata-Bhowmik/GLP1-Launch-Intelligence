@@ -277,7 +277,7 @@ sequenceDiagram
 
 ## 📓 Notebook learning ladder
 
-Every notebook teaches the theory in plain language, then applies it, and ends with interview questions. Text claims are checked against the outputs.
+Every notebook teaches the theory in plain language, then applies it, and ends with questions to check understanding. Text claims are checked against the outputs.
 
 | # | Notebook | What it teaches | What it produces |
 |---|---|---|---|

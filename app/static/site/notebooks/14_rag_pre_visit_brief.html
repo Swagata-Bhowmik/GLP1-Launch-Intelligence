@@ -8492,9 +8492,9 @@ Q: What should a patient do if they miss a Zepbound injection?
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jupyter-widgets jp-OutputArea-output" id="5541e524-8b8b-4afa-a0e4-58f0cfcfc8c6" tabindex="0">
+<div class="jupyter-widgets jp-OutputArea-output" id="59382f16-de3c-4828-8de3-7474d1405b8a" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('5541e524-8b8b-4afa-a0e4-58f0cfcfc8c6');
+var element = document.getElementById('59382f16-de3c-4828-8de3-7474d1405b8a');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "8f5eb2f7b0c14d1189b5a26881506440", "version_major": 2, "version_minor": 0}
@@ -9549,7 +9549,7 @@ We test 8 questions where the right behaviour is to <strong>refuse</strong> (<em
 <p><b style="font-size:1.02em; letter-spacing:.3px">🎯 Key takeaways</b></p>
 <p><strong>Done:</strong> a working RAG pipeline on free tools. Retrieval lifts the same 1.5B model from <strong>4 to 21 correct answers out of 30</strong>, and 77% of its sentences are entailed by the label (29% without retrieval). A post-generation guard <strong>catches both invented answers</strong> in the guardrail test. The pre-visit brief splits the work: code writes the facts, metadata guarantees the safety warning, and the LLM does small cited steps.
 <strong>Next:</strong> notebook 15, a <strong>tool-using agent</strong> ("Ask AI"). The LLM chooses between tools (SQL over the doctor table, this RAG search, FAERS counts) to answer analyst questions.</p>
-<p><strong>Interview questions you can now answer</strong></p>
+<p><strong>Check your understanding</strong></p>
 <ul>
 <li><em>What is RAG and why use it?</em> Retrieve relevant passages, then generate only from them with citations. It gives fresh, checkable facts. Here: dronedarone/150 mg (closed book) vs the label's 0.8 mg (RAG).</li>
 <li><em>How do you evaluate a RAG system?</em> Separately: retrieval (recall@k, notebook 13), correctness (graded answers), faithfulness (NLI per sentence), citation validity, refusal behaviour.</li>

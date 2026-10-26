@@ -8271,9 +8271,9 @@ a.anchor-link {
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jupyter-widgets jp-OutputArea-output" id="9af3aa38-6c59-431f-945d-a447154b5153" tabindex="0">
+<div class="jupyter-widgets jp-OutputArea-output" id="e222c830-8c18-4ea2-a25d-6d8e111f05eb" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('9af3aa38-6c59-431f-945d-a447154b5153');
+var element = document.getElementById('e222c830-8c18-4ea2-a25d-6d8e111f05eb');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "5708c82d805346e5983b24fbd0f8a484", "version_major": 2, "version_minor": 0}
@@ -8373,9 +8373,9 @@ Vector databases (FAISS, Chroma, pgvector, Pinecone) are built on such indexes p
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jupyter-widgets jp-OutputArea-output" id="acb12119-c51d-4896-81f3-44f1e855a99e" tabindex="0">
+<div class="jupyter-widgets jp-OutputArea-output" id="553ed165-ab54-4019-ae13-035fe13953df" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('acb12119-c51d-4896-81f3-44f1e855a99e');
+var element = document.getElementById('553ed165-ab54-4019-ae13-035fe13953df');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "9ea147dd42b24e34ad4cc792761580be", "version_major": 2, "version_minor": 0}
@@ -8452,7 +8452,7 @@ var element = document.getElementById('acb12119-c51d-4896-81f3-44f1e855a99e');
 <p><b style="font-size:1.02em; letter-spacing:.3px">📊 Reading the output</b></p>
 <ul>
 <li>At our size (8,013 vectors) exact search takes <strong>under 0.1 ms</strong> per query. HNSW is barely faster and returns 99.6% of the same top-10 (timings vary a little per run).</li>
-<li><strong>So we use the exact (flat) index.</strong> ANN only pays off at millions of vectors. This is still worth knowing for interviews, because it is how production vector databases scale.</li>
+<li><strong>So we use the exact (flat) index.</strong> ANN only pays off at millions of vectors. It is still worth knowing, because it is how production vector databases scale.</li>
 </ul>
 </div>
 </div>
@@ -8717,9 +8717,9 @@ var element = document.getElementById('acb12119-c51d-4896-81f3-44f1e855a99e');
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jupyter-widgets jp-OutputArea-output" id="f39f0fd8-65ac-4bf8-a5ab-e66c1ba7361e" tabindex="0">
+<div class="jupyter-widgets jp-OutputArea-output" id="82cc327a-3eeb-4132-af52-752e4ea7ff3c" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('f39f0fd8-65ac-4bf8-a5ab-e66c1ba7361e');
+var element = document.getElementById('82cc327a-3eeb-4132-af52-752e4ea7ff3c');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "b4096add360c41be9ecd4f97e697ad95", "version_major": 2, "version_minor": 0}
@@ -9623,7 +9623,7 @@ Notes are short, abbreviated and full of synonyms (<em>copay</em>, <em>PA</em>, 
 <p><b style="font-size:1.02em; letter-spacing:.3px">🎯 Key takeaways</b></p>
 <p><strong>Done:</strong> a searchable knowledge base of <strong>8,013 chunks</strong> (labels, papers, notes) with metadata, and a measured retriever. <strong>Hybrid (BM25 + BGE) is the most robust</strong>: recall@5 87% on papers, 29/30 label questions in the top 5. Re-ranking helps real questions but not title matching, and the brand filter guarantees the right label.
 <strong>Next:</strong> notebook 14, <strong>RAG</strong>: give the top chunks to an open LLM, write a pre-visit brief <strong>with citations</strong>, and measure whether answers stay faithful to the sources.</p>
-<p><strong>Interview questions you can now answer</strong></p>
+<p><strong>Check your understanding</strong></p>
 <ul>
 <li><em>Bi-encoder vs cross-encoder?</em> Bi-encoder: embed query and passage separately, fast, used for search. Cross-encoder: reads both together, more accurate, too slow for search, used to re-rank the top 30.</li>
 <li><em>Why hybrid search?</em> Keywords catch exact names and codes, embeddings catch synonyms. They fail on different queries, and RRF fuses their ranks without mixing score scales.</li>

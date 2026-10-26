@@ -9166,7 +9166,7 @@ Q: What is the weather in Chicago today?
 <p><b style="font-size:1.02em; letter-spacing:.3px">🎯 Key takeaways</b></p>
 <p><strong>Done:</strong> an Ask-AI agent on free local tools. The LLM picks among 5 tools and fills their arguments; code computes every number (127 of 128 numbers traceable). It chooses the right tool <strong>81%</strong> of the time, but the right tool <em>with the right filters</em> only <strong>71%</strong>, and 12 of 21 final answers are fully correct. The most instructive failure was a hallucination inside one tool (<em>"80%"</em> for HR 0.80) that the agent passed on as fact, now caught by code-enforced provenance (<code>finalize</code>).
 <strong>Next:</strong> notebook 17 (evaluation and guardrails report), pulling notebooks 07–15 into one scorecard. Then the Ask-AI page in the app.</p>
-<p><strong>Interview questions you can now answer</strong></p>
+<p><strong>Check your understanding</strong></p>
 <ul>
 <li><em>What is an agent?</em> An LLM in a loop that chooses actions (tool calls), observes the results and decides the next step: reason → act → observe.</li>
 <li><em>How does function calling work?</em> Tools are described as JSON schemas (here generated from docstrings). The model emits a structured call, code executes it and returns the result as a message.</li>

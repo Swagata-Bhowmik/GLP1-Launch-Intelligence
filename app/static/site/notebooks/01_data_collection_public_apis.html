@@ -8008,7 +8008,7 @@ Most public data APIs are <strong>REST</strong> APIs: you send an HTTP <code>GET
 <p><strong>3 · Retries with exponential backoff.</strong> Networks fail. On a temporary error (429 "too many requests", 5xx server error) we wait 1 s, 2 s, 4 s… and try again.
 → <code>src/glp1_intel/data_collection/_http.py</code></p>
 <p><strong>4 · Idempotent + atomic writes.</strong> Each fetcher <strong>skips work that already exists</strong> (safe to re-run), and writes to a <code>.tmp</code> file first, renaming it only when complete. A crash can never leave a half-file that looks finished.</p>
-<p><strong>5 · Provenance.</strong> Next to each download we save a small <code>*_meta.json</code>: the query, total matches and date. In an interview: <em>"How do you know where this number came from?"</em> → the meta file.</p>
+<p><strong>5 · Provenance.</strong> Next to each download we save a small <code>*_meta.json</code>: the query, total matches and date. A reviewer may ask: <em>"How do you know where this number came from?"</em> → the meta file.</p>
 </div>
 </div>
 </div>
@@ -10596,7 +10596,7 @@ ADE Corpus v2 has sentences from medical case reports, labelled <strong>1 = ment
 <p><b style="font-size:1.02em; letter-spacing:.3px">🎯 Key takeaways</b></p>
 <p><strong>Done:</strong> 8 public sources fetched by reusable, resumable code; small validated summaries for each.
 <strong>Next:</strong> Notebook 03 joins Part D + NPPES + Open Payments (+ trial and publication signals) on <strong>NPI</strong> into the one-row-per-doctor <strong>HCP 360</strong> table.</p>
-<p><strong>Interview questions you can now answer</strong></p>
+<p><strong>Check your understanding</strong></p>
 <ul>
 <li><em>How did you handle an API that returns only 500 rows per request?</em> Pagination, and when that was too slow, streaming the bulk file with filtering while reading.</li>
 <li><em>What is exponential backoff?</em> Retrying after 1, 2, 4… seconds so temporary failures don't kill the job and the server isn't hammered.</li>

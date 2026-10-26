@@ -3,7 +3,7 @@
 Read in order. Each notebook explains the theory in plain language, then applies it to the project.
 
 **Colour key** (same in every notebook; boxes come from `src/glp1_intel/notebook_style.py`):
-🟣 section heading · 💡 concept / theory (orange) · 🛠️ what the next code does (mint) · 📊 reading the output (blue) · ⚠️ watch out (rose) · 🎯 key takeaways + interview questions (green).
+🟣 section heading · 💡 concept / theory (orange) · 🛠️ what the next code does (mint) · 📊 reading the output (blue) · ⚠️ watch out (rose) · 🎯 key takeaways + check-your-understanding questions (green).
 Colours show in Jupyter, VS Code and Colab; GitHub's viewer keeps the icons and text but drops the colours.
 
 | # | Notebook | Topic | Status |

@@ -8730,7 +8730,7 @@ The filter is then based on <strong>what is actually in the data</strong>, not o
 An exact match on "exenatide" alone silently drops <strong>4,844 rows</strong>. Always look at the real values before you filter.</p>
 <p><strong>Trap 2, a false positive:</strong> <code>Teduglutide</code> (Gattex) matches the pattern but is a <strong>GLP-2</strong> drug for short bowel syndrome, not a GLP-1. → excluded.</p>
 <p><strong>A judgement call:</strong> <code>Insulin Glargine/Lixisenatide</code> (Soliqua) is a basal-insulin-first combination, small and outside the tirzepatide-vs-semaglutide story. → excluded.
-Write such choices down: <em>"why did you include X but not Y?"</em> is a classic interview question.</p>
+Write such choices down: <em>"why did you include X but not Y?"</em> is a question every data choice should be able to answer.</p>
 </div>
 </div>
 </div>
@@ -10229,7 +10229,7 @@ If the top deciles write most of the claims, a small sales force can cover most 
 <p><b style="font-size:1.02em; letter-spacing:.3px">🎯 Key takeaways</b></p>
 <p><strong>Done:</strong> 28M rows → validated GLP-1 subset (<code>data/02_interim/part_d_2024_glp1.parquet</code>), plus a first market profile.
 <strong>Next:</strong> Notebook 01 collects the other public sources, and notebook 03 joins everything on NPI into the one-row-per-doctor <strong>HCP 360</strong> table.</p>
-<p><strong>Interview questions you can now answer</strong></p>
+<p><strong>Check your understanding</strong></p>
 <ul>
 <li><em>Why DuckDB over pandas for a 4 GB file?</em> Streaming, columnar, vectorised, parallel; reduce first, then use pandas.</li>
 <li><em>Why Parquet?</em> Columnar, compressed, typed, works across tools.</li>
