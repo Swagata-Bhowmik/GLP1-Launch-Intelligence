@@ -8,6 +8,7 @@ A.setup("Pre-visit brief")
 st.markdown("## Pre-visit brief")
 st.caption("Pick your territory and a doctor. The brief is built instantly from data and the FDA label: numbers by code, "
            "label sentences quoted exactly with their source. An AI-written version is optional.")
+A.page_help("rep_brief")
 
 t = A.load("targets")
 BRANDS = ["Foundayo", "Mounjaro", "Zepbound", "Trulicity", "Ozempic", "Wegovy", "Rybelsus", "Victoza", "Saxenda"]

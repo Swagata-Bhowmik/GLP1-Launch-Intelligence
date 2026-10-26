@@ -8,6 +8,7 @@ k = A.load_kpis()
 A.hero("The GLP-1 market,", "decoded",
        "Which doctors to prioritise after the 2026 GLP-1 market shift (oral Foundayo approval in April, "
        "Medicare GLP-1 Bridge from July), and why. Built on real public US data.")
+A.page_help("home")
 
 A.kpis([
     {"label": "GLP-1 prescribers", "value": k["prescribers"], "note": "Medicare Part D 2024", "icon": "◉"},

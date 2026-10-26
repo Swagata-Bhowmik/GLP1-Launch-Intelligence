@@ -6,6 +6,7 @@ import aurora as A
 A.setup("Doctor 360")
 st.markdown("## Doctor 360")
 st.caption("One row per doctor: prescribing, registry, payments, research and score, joined on NPI.")
+A.page_help("doctor")
 
 t = A.load("targets")
 

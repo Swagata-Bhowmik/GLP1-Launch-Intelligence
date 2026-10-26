@@ -7,6 +7,7 @@ A.setup("Log a visit")
 st.markdown("## Log a visit note")
 st.caption("Paste or type a visit note. Four models from notebooks 11–12 read it instantly: drugs, doses and side effects are "
            "highlighted, possible adverse events are flagged for safety review, and doctor objections are tagged.")
+A.page_help("rep_note")
 
 SAMPLE = ("Saw Dr. at endo clinic, discussed Foundayo vs Ozempic 1 mg. One pt had severe vomiting after starting Ozempic, "
           "stopped it. Doc worried about cost and prior auth for Medicare pts, open to oral option for needle-averse pts.")

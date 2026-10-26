@@ -8,6 +8,7 @@ A.setup("Targeting")
 st.markdown("## Who to target for the 2026 opportunity")
 st.caption("Transparent 0–100 score: potential 30% · GLP-1 experience 20% · headroom 15% · tirzepatide openness 15% · "
            "oral affinity 10% · research 5% · coverage gap 5%. Details in notebook 05.")
+A.page_help("targeting")
 
 t = A.load("targets")
 

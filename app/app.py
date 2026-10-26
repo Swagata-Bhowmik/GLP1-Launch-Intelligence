@@ -28,6 +28,7 @@ st.logo(str(Path(__file__).parent / "static" / "site" / "assets" / "logo.svg"), 
 
 pages = {
     "": [st.Page("views/landing.py", title="Home", icon=":material/home:", default=True),
+         st.Page("views/guide.py", title="Start here", icon=":material/explore:"),
          st.Page("views/ask_ai.py", title="Ask AI", icon=":material/smart_toy:")],
     "Analyst": [
         st.Page("views/market.py", title="Market", icon=":material/bar_chart:"),
@@ -39,6 +40,10 @@ pages = {
     "Sales rep": [
         st.Page("views/rep_brief.py", title="Pre-visit brief", icon=":material/assignment_ind:"),
         st.Page("views/rep_note.py", title="Log a visit", icon=":material/edit_note:"),
+    ],
+    "Project": [
+        st.Page("views/notebooks.py", title="Notebooks", icon=":material/menu_book:"),
+        st.Page("views/decisions.py", title="Decisions & results", icon=":material/fact_check:"),
     ],
 }
 nav = st.navigation(pages, position="top")

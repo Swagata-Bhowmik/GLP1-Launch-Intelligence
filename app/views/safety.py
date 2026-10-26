@@ -6,6 +6,7 @@ import aurora as A
 A.setup("Safety signals")
 st.markdown("## Safety signals (FAERS)")
 st.caption("FDA Adverse Event Reporting System, aggregated by openFDA · reports received to mid-2026")
+A.page_help("safety")
 A.callout("FAERS counts reflect <b>reporting</b>, not how often side effects happen: reports are voluntary and unverified, "
           "and there is no denominator. Use this to anticipate <b>what doctors may ask about</b>, never to compare drug safety.",
           "warn")

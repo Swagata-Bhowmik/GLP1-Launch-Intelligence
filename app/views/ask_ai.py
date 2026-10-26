@@ -10,6 +10,7 @@ A.setup("Ask AI")
 A.hero("Ask AI:", "answers you can trace",
        "A small open LLM chooses among five data tools. Every number comes from code, label answers come with citations, "
        "and warnings from the safety checks are attached automatically.", eyebrow="Agent · RAG · guardrails")
+A.page_help("ask_ai")
 
 GRADE_STYLE = {"correct": ("#E3F8F5", "#0E7C72"), "partial": ("#FFF6E0", "#8A5A00"), "wrong": ("#FFECE6", "#A63A1A")}
 TOOL_LABEL = {"top_doctors": "Doctor ranking · Medicare Part D 2024", "market_summary": "Market summary · Medicare Part D 2024",

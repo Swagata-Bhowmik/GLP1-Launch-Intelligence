@@ -7,6 +7,7 @@ import aurora as A
 A.setup("Market")
 st.markdown("## Market landscape")
 st.caption("Medicare Part D 2024 · Medicaid SDUD to Q1 2026 · colour = molecule")
+A.page_help("market")
 
 brands = A.load("brands")
 states = A.load("states")

@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <!-- bump ?v= whenever styles.css / main.js change, so browsers do not run a cached copy -->
-  <link rel="stylesheet" href="styles.css?v=6">
+  <link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body>
   <!-- custom cursor: dot + ring + light trail (desktop only) -->
@@ -51,7 +51,7 @@
         <h1 class="reveal">See what’s <span class="grad">next</span><br>in <span class="grad grad-blue">GLP-1</span></h1>
         <p class="lede reveal">Real public data. Explainable AI.<br>A clearer view of the 2026 market shift.</p>
         <div class="hero-cta reveal">
-          <a class="btn btn-primary btn-lg" href="#tools">Explore LaunchLens <span aria-hidden="true">→</span></a>
+          <a class="btn btn-primary btn-lg" href="https://glp1-launchlens.streamlit.app/guide" data-page="guide">Start here: project guide <span aria-hidden="true">→</span></a>
           <a class="btn btn-ghost" href="https://glp1-launchlens.streamlit.app/market" data-page="market"><span class="play" aria-hidden="true">▶</span> See it live</a>
         </div>
       </div>
@@ -186,24 +186,29 @@
     <section class="pages" id="pages" aria-labelledby="pages-title">
       <div class="section-head">
         <h2 id="pages-title" class="reveal">Every page, <span class="grad">in order</span></h2>
-        <p class="reveal">A guided tour of the app. Each page answers one question.</p>
+        <p class="reveal">New here? Start with 1 to 4, then open the tools. Each page answers one question.</p>
       </div>
       <div class="page-groups">
         <div class="page-group reveal">
-          <h3>For analysts</h3>
-          <a class="page-link glass" href="https://glp1-launchlens.streamlit.app/market" data-page="market" data-hover><span class="pn">1</span><span><b>Market</b><small>Where is the opportunity? Brands, states, coverage changes</small></span><span class="go">→</span></a>
-          <a class="page-link glass" href="https://glp1-launchlens.streamlit.app/targeting" data-page="targeting" data-hover><span class="pn">2</span><span><b>Find doctors</b><small>Who to visit first? All 308,303 doctors ranked, with filters</small></span><span class="go">→</span></a>
-          <a class="page-link glass" href="https://glp1-launchlens.streamlit.app/doctor" data-page="doctor" data-hover><span class="pn">3</span><span><b>Doctor 360</b><small>Why this doctor? Search a name, see the score explained</small></span><span class="go">→</span></a>
-          <a class="page-link glass" href="https://glp1-launchlens.streamlit.app/safety" data-page="safety" data-hover><span class="pn">4</span><span><b>Safety</b><small>What side effects do people report to the FDA?</small></span><span class="go">→</span></a>
-          <a class="page-link glass" href="https://glp1-launchlens.streamlit.app/home" data-page="home" data-hover><span class="pn">5</span><span><b>Key numbers</b><small>The summary: four numbers and three findings</small></span><span class="go">→</span></a>
+          <h3>Start here</h3>
+          <a class="page-link glass" href="https://glp1-launchlens.streamlit.app/guide" data-page="guide" data-hover><span class="pn">1</span><span><b>Project guide</b><small>What the project is, how to read this site, where to find what, glossary</small></span><span class="go">→</span></a>
+          <a class="page-link glass" href="report.html" target="_blank" rel="noopener" data-hover><span class="pn">2</span><span><b>Project report</b><small>The whole project on one printable page (opens in a new tab)</small></span><span class="go">→</span></a>
+          <a class="page-link glass" href="https://glp1-launchlens.streamlit.app/notebooks" data-page="notebooks" data-hover><span class="pn">3</span><span><b>Notebooks</b><small>All 16 notebooks: what each did, its key result and decision</small></span><span class="go">→</span></a>
+          <a class="page-link glass" href="https://glp1-launchlens.streamlit.app/decisions" data-page="decisions" data-hover><span class="pn">4</span><span><b>Decisions &amp; results</b><small>Why each choice was made, targets vs results, limitations</small></span><span class="go">→</span></a>
+          <h3>For sales reps</h3>
+          <a class="page-link glass" href="https://glp1-launchlens.streamlit.app/rep_brief" data-page="rep_brief" data-hover><span class="pn">10</span><span><b>Pre-visit brief</b><small>Before the visit: the doctor's numbers and the official label</small></span><span class="go">→</span></a>
+          <a class="page-link glass" href="https://glp1-launchlens.streamlit.app/rep_note" data-page="rep_note" data-hover><span class="pn">11</span><span><b>Log a visit</b><small>After the visit: AI reads the note and flags side effects</small></span><span class="go">→</span></a>
         </div>
         <div class="page-group reveal">
-          <h3>For sales reps</h3>
-          <a class="page-link glass" href="https://glp1-launchlens.streamlit.app/rep_brief" data-page="rep_brief" data-hover><span class="pn">6</span><span><b>Pre-visit brief</b><small>Before the visit: the doctor's numbers and the official label</small></span><span class="go">→</span></a>
-          <a class="page-link glass" href="https://glp1-launchlens.streamlit.app/rep_note" data-page="rep_note" data-hover><span class="pn">7</span><span><b>Log a visit</b><small>After the visit: AI reads the note and flags side effects</small></span><span class="go">→</span></a>
+          <h3>For analysts</h3>
+          <a class="page-link glass" href="https://glp1-launchlens.streamlit.app/market" data-page="market" data-hover><span class="pn">5</span><span><b>Market</b><small>Where is the opportunity? Brands, states, coverage changes</small></span><span class="go">→</span></a>
+          <a class="page-link glass" href="https://glp1-launchlens.streamlit.app/targeting" data-page="targeting" data-hover><span class="pn">6</span><span><b>Find doctors</b><small>Who to visit first? All 308,303 doctors ranked, with filters</small></span><span class="go">→</span></a>
+          <a class="page-link glass" href="https://glp1-launchlens.streamlit.app/doctor" data-page="doctor" data-hover><span class="pn">7</span><span><b>Doctor 360</b><small>Why this doctor? Search a name, see the score explained</small></span><span class="go">→</span></a>
+          <a class="page-link glass" href="https://glp1-launchlens.streamlit.app/safety" data-page="safety" data-hover><span class="pn">8</span><span><b>Safety</b><small>What side effects do people report to the FDA?</small></span><span class="go">→</span></a>
+          <a class="page-link glass" href="https://glp1-launchlens.streamlit.app/home" data-page="home" data-hover><span class="pn">9</span><span><b>Key numbers</b><small>The summary: four numbers and three findings</small></span><span class="go">→</span></a>
           <h3>For everyone</h3>
-          <a class="page-link glass" href="https://glp1-launchlens.streamlit.app/ask_ai" data-page="ask_ai" data-hover><span class="pn">8</span><span><b>Ask AI</b><small>Ask in plain English, see the answer and its sources</small></span><span class="go">→</span></a>
-          <p class="pages-tip">Inside the app, the menu at the top (<b>Analyst</b>, <b>Sales rep</b>, <b>Ask AI</b>) opens every page. <b>Home</b> brings you back here.</p>
+          <a class="page-link glass" href="https://glp1-launchlens.streamlit.app/ask_ai" data-page="ask_ai" data-hover><span class="pn">12</span><span><b>Ask AI</b><small>Ask in plain English, see the answer and its sources</small></span><span class="go">→</span></a>
+          <p class="pages-tip">Every page has a <b>“How to read this page”</b> box. Inside the app, the top menu (<b>Start here</b>, <b>Analyst</b>, <b>Sales rep</b>, <b>Project</b>, <b>Ask AI</b>) opens every page; <b>Home</b> brings you back here.</p>
         </div>
       </div>
     </section>
@@ -279,6 +284,6 @@
     Independent portfolio project on public and synthetic data. Not affiliated with any pharmaceutical company. Not medical advice.
   </footer>
 
-    <script src="main.js?v=6" defer></script>
+    <script src="main.js?v=7" defer></script>
 </body>
 </html>

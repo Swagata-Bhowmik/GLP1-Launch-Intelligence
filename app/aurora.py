@@ -240,3 +240,15 @@ def load(name: str) -> pd.DataFrame:
 @st.cache_data
 def load_kpis() -> dict:
     return json.loads((DATA / "kpis.json").read_text())
+
+
+def page_help(key: str) -> None:
+    """The page's guide box (text in guide_content.PAGE_HELP): the question it answers and what the result means are
+    always visible; how to read each chart sits in an expander right below."""
+    import guide_content as G
+    h = G.PAGE_HELP[key]
+    st.html(f'<div class="aur-callout"><b>This page answers:</b> {h["question"]}<br>'
+            f'<b>What it means:</b> {h["meaning"]}<br><span style="color:#5A6386;font-size:13px">Source: {h["source"]}</span></div>')
+    with st.expander("How to read this page: every chart and number explained", icon=":material/menu_book:"):
+        for line in h["read"]:
+            st.markdown(f"- {line}")
