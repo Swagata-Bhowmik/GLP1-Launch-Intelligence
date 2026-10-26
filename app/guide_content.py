@@ -9,6 +9,7 @@ REPO = "https://github.com/Swagata-Bhowmik/GLP1-Launch-Intelligence"
 HF = "https://huggingface.co/SwagataBhowmik"
 NBVIEWER = "https://nbviewer.org/github/Swagata-Bhowmik/GLP1-Launch-Intelligence/blob/main/notebooks/"
 GITHUB_NB = REPO + "/blob/main/notebooks/"
+REPORT = APP + "~/+/app/static/site/report.html"   # Streamlit Cloud serves static files under /~/+/
 
 # ── the project in a few lines ────────────────────────────────────────────────
 SUMMARY = {

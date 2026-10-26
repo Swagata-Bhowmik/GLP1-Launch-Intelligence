@@ -10,6 +10,7 @@ A.hero("Start here:", "the project guide",
 
 st.markdown("#### The project in one line")
 A.callout(G.SUMMARY["one_line"])
+st.link_button("Read the whole project on one page (project report)", G.REPORT, icon=":material/description:", type="primary")
 
 c1, c2 = st.columns(2)
 with c1:
@@ -49,7 +50,8 @@ for col, items in ((g1, G.GLOSSARY[:half]), (g2, G.GLOSSARY[half:])):
             st.markdown(f"**{term}:** {meaning}")
 
 st.markdown("#### Everything else")
-l1, l2, l3, l4 = st.columns(4)
+l0, l1, l2, l3, l4 = st.columns(5)
+l0.link_button("Project report", G.REPORT, icon=":material/description:", width="stretch")
 l1.link_button("Code on GitHub", G.REPO, icon=":material/code:", width="stretch")
 l2.link_button("Models & data on Hugging Face", G.HF, icon=":material/deployed_code:", width="stretch")
 l3.page_link("views/notebooks.py", label="All notebooks", icon=":material/menu_book:")
