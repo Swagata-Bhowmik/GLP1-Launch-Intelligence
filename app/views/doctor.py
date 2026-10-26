@@ -81,4 +81,8 @@ with c2:
         extra.append(f"{int(d['trials'])} linked GLP-1 trials")
     if extra:
         st.markdown("- " + " · ".join(extra) + " *(name-matched: verify before use)*")
-    A.callout("Pre-visit brief and visit-note analysis for this doctor arrive with the NLP + RAG phases (notebooks 09–15).")
+    A.callout("Preparing a visit? Open the <b>Pre-visit brief</b> for this doctor's territory and the product's label facts, "
+              "or <b>Log a visit</b> to analyse a note afterwards.")
+    l1, l2 = st.columns(2)
+    l1.page_link("views/rep_brief.py", label="Pre-visit brief", icon=":material/assignment_ind:")
+    l2.page_link("views/rep_note.py", label="Log a visit", icon=":material/edit_note:")
